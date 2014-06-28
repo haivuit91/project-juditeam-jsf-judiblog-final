@@ -2,15 +2,52 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
         <ui:composition template="./common.xhtml">
 
             <ui:define name="content">
-                <div class="col-md-12">
-                    <div class="page-header"><h1>Post Management</h1></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="page-header"><h1>Post Management</h1></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                List post
+                            </div>
+
+                            <div class="table">
+                                <f:view>
+                                    <h:form>
+                                        <h:dataTable value="#{postManagerBean.getListPost()}" var="item" class="table table-bor table-hover" id="dataTables">
+                                            <h:column>
+                                                <f:facet name="header">Title</f:facet>
+                                                <a href="dsdsd">${item.title}</a>
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header">Date</f:facet>
+                                                sdsdsdsd
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header">User</f:facet>
+                                                dsds
+                                            </h:column>
+                                            <h:column class="col-xs-1">
+                                                <f:facet name="header">Action</f:facet>
+                                                dsdsdsd
+                                            </h:column>
+                                        </h:dataTable>
+                                    </h:form>
+                                </f:view>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </ui:define>
 

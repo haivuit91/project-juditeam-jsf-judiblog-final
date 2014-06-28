@@ -27,32 +27,32 @@ public class CategoryDAO implements CategoryDAOService {
     }
 
     @Override
-    public Category getCategoryByID(int categoryID) throws Exception {
+    public Category getCategoryByID(int catID) throws Exception {
         Category category = new Category();
-        String sql = "select * from tblCategory where categoryID =? and isActive = 'true' ";
+        String sql = "select * from tbl_category where catID =? and isActive = 'true' ";
         Connection conn = ConnectionFactory.getConnection();
         PreparedStatement sm = conn.prepareStatement(sql);
-        sm.setInt(1, categoryID);
+        sm.setInt(1, catID);
         ResultSet rs = sm.executeQuery();
         while (rs.next()) {
-            category.setCatID(rs.getInt("categoryID"));
-            category.setCatName(rs.getString("categoryName"));
+            category.setCatID(rs.getInt("catID"));
+            category.setCatName(rs.getString("catName"));
             category.setActive(true);
         }
         return category;
     }
 
     @Override
-    public Category getCategoryByName(String categoryName) throws Exception {
+    public Category getCategoryByName(String catName) throws Exception {
         Category category = new Category();
-        String sql = "select * from tblCategory where categoryName =? and isActive = 'true' ";
+        String sql = "select * from tbl_category where catName =? and isActive = 'true' ";
         Connection conn = ConnectionFactory.getConnection();
         PreparedStatement sm = conn.prepareStatement(sql);
-        sm.setString(1, categoryName);
+        sm.setString(1, catName);
         ResultSet rs = sm.executeQuery();
         while (rs.next()) {
-            category.setCatID(rs.getInt("categoryID"));
-            category.setCatName(rs.getString("categoryName"));
+            category.setCatID(rs.getInt("catID"));
+            category.setCatName(rs.getString("catName"));
             category.setActive(true);
         }
         return category;
@@ -60,7 +60,7 @@ public class CategoryDAO implements CategoryDAOService {
 
     @Override
     public boolean createCategory(Category category) throws Exception {
-        String sql = "insert into tblCategory (categoryName,isActive) values(?,?)";
+        String sql = "insert into tbl_category (catName,isActive) values(?,?)";
         Connection conn = ConnectionFactory.getConnection();
         PreparedStatement sm = conn.prepareStatement(sql);
         sm.setString(1, category.getCatName());
@@ -70,7 +70,7 @@ public class CategoryDAO implements CategoryDAOService {
 
     @Override
     public boolean removeCategory(Category category) throws Exception {
-        String sql = "delete tblCategory where categoryID = ? ";
+        String sql = "delete tbl_category where catID = ? ";
         Connection conn = ConnectionFactory.getConnection();
         PreparedStatement sm = conn.prepareStatement(sql);
         sm.setInt(1, category.getCatID());
@@ -79,7 +79,7 @@ public class CategoryDAO implements CategoryDAOService {
 
     @Override
     public boolean updateCategoryByID(Category category) throws Exception {
-        String sql = "update tblCategory set categoryName =? ,isActive = ? where categoryID=? ";
+        String sql = "update tbl_category set catName =? ,isActive = ? where catID=? ";
         Connection conn = ConnectionFactory.getConnection();
         PreparedStatement sm = conn.prepareStatement(sql);
         sm.setString(1, category.getCatName());
@@ -95,7 +95,7 @@ public class CategoryDAO implements CategoryDAOService {
 
     @Override
     public boolean activeCategory(Category category) throws Exception {
-        String sql = "update tblCategory set isActive = ? where categoryID= ? ";
+        String sql = "update tbl_category set isActive = ? where catID= ? ";
         Connection conn = ConnectionFactory.getConnection();
         PreparedStatement sm = conn.prepareStatement(sql);
         sm.setBoolean(1,category.isActive());
