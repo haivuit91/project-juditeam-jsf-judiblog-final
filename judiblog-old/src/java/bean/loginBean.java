@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import model.dao.UserDAO;
 import model.dao.service.UserDAOService;
 import model.entities.User;
@@ -26,7 +27,7 @@ public class loginBean {
     private String pwd;
     private User user;
     private final HttpServletRequest httpServletRequest;
-    private final FacesContext facesContext;
+    private  FacesContext facesContext;
     private FacesMessage facesMessage;
 
     UserDAOService USER_SERVICE = UserDAO.getInstance();
@@ -35,10 +36,13 @@ public class loginBean {
         facesContext = FacesContext.getCurrentInstance();
         httpServletRequest = (HttpServletRequest) facesContext.getExternalContext().getRequest();
     }
-   
-    
+
     public String login() {
         if (USER_SERVICE.checkLogin(userName, pwd)) {
+            facesContext = FacesContext.getCurrentInstance();
+            HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+            session.setAttribute("current","1"); // làm tạm cho nó chạy ai làm phần nay sửa lại cho đúng
+            
 //            User user = USER_SERVICE.getUserByUserName(userName);
 //            httpServletRequest.getSession().setAttribute(util.Constants.CURRENT_USER, user);
 //            
