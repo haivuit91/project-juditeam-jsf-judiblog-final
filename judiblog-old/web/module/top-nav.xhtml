@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/bootstrap.css"/>
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+        <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="home.jsf"><img src="img/logo.png" ></img></a>
+                </div>
+                <div class="collapse navbar-collapse ">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="home.jsf">HOME</a></li>
+                        <li><a href="aboutTeam.jsf">ABOUT US</a></li>
+                        <li><a href="#about">SERVICES</a></li>
+                        <li><a href="contact.jsf">CONTACT</a></li>
+
+                    </ul>
+                </div><!-- /.nav-collapse -->
+            </div><!-- /.nav-contain -->
+        </div><!-- /.navbar -->
+        <!--SLIDE SHOW IMAGES-->
+        <div class="navbar-wrapper">
+            <!--Banner-->
+           
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            <!--image0-->
+                            <div class="item active">
+                                <img src="img/slideshow/bn1.png" data-src="holder.js/1170x200/auto/#777:#555/text:First slide" alt="Nông Thôn Mới"></img>
+                            </div>
+                            <!--image1-->
+                            <div class="item">
+                                <img src="img/slideshow/bn2.png" alt=""/>
+                            </div>
+                            <!--image2-->
+                            <div class="item">
+                                <img src="img/slideshow/bn3.png" data-src="holder.js/1170x200/auto/#777:#555/text:First slide" alt="Nông Mới Thôn"></img>
+                            </div>
+                            <!--image3-->
+                            <div class="item">
+                                <img src="img/slideshow/bn4.png" data-src="holder.js/1170x200/auto/#777:#555/text:First slide" alt="Nông Mới Thôn"></img>
+                            </div>
+                        </div>
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                    </div>
+         
+        </div>
+
+
+    </h:body>
+
+</html>
