@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Judi | Admin</title>
+
+        <h:outputStylesheet name="./css/bootstrap.min.css" />
+        <h:outputStylesheet name="./fonts/css/font-awesome.css" />
+        <h:outputStylesheet name="./css/plugins/dataTables/dataTables.bootstrap.css" />
+        <h:outputStylesheet name="./css/sb-admin.css" />
+        <!--Date JQuery-->
+        <h:outputStylesheet name="./css/bootstrap-datetimepicker.min.css" />
+        <h:outputStylesheet name="./css/jquery-ui-1.9.2.css" />
+    </h:head>
+
+    <h:body>
+        <div id="wrapper">
+            <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+                <ui:insert name="navigation" >
+                    <ui:include src="navigation.xhtml" />
+                </ui:insert>
+            </nav>
+            <div id="page-wrapper">
+                <ui:insert name="content" >
+                    <ui:include src="admin.xhtml" />
+                </ui:insert> 
+            </div>
+        </div>
+
+        <!-- Core Scripts - Include with every page -->        
+         <h:outputScript name="./js/jquery-1.10.2.js" />
+         <h:outputScript name="./js/bootstrap.min.js" />
+         <h:outputScript name="./js/plugins/metisMenu/jquery.metisMenu.js" />
+         <h:outputScript name="./js/plugins/dataTables/jquery.dataTables.js" />
+         <h:outputScript name="./js/plugins/dataTables/dataTables.bootstrap.js" />
+         <h:outputScript name="./js/sb-admin.js" />
+        <!--Date JQuery-->
+         <h:outputScript name="./js/bootstrap-datetimepicker.min.js" />
+         <h:outputScript name="./js/jquery-ui-1.9.2.js" />
+
+        <script type="text/javascript">
+
+            $(document).ready(function() {
+                $('#dataTables').dataTable();
+            });
+
+            $(".datetimepicker").datepicker();
+
+//            $(function() {
+//                $('.datetimepicker').datetimepicker({
+//                    pickTime: false
+//                });
+//            });
+        </script>
+    </h:body>
+
+</html>
