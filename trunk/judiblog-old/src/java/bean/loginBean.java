@@ -27,7 +27,7 @@ public class loginBean {
     private String pwd;
     private User user;
     private final HttpServletRequest httpServletRequest;
-    private  FacesContext facesContext;
+    private FacesContext facesContext;
     private FacesMessage facesMessage;
 
     UserDAOService USER_SERVICE = UserDAO.getInstance();
@@ -40,12 +40,9 @@ public class loginBean {
     public String login() {
         if (USER_SERVICE.checkLogin(userName, pwd)) {
             facesContext = FacesContext.getCurrentInstance();
+            user = USER_SERVICE.getUserByUserName(userName);
             HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
-            session.setAttribute("current","1"); // làm tạm cho nó chạy ai làm phần nay sửa lại cho đúng
-            
-//            User user = USER_SERVICE.getUserByUserName(userName);
-//            httpServletRequest.getSession().setAttribute(util.Constants.CURRENT_USER, user);
-//            
+            session.setAttribute(util.Constants.CURRENT_USER, user);
             return "./info-user.jsf";
         } else {
 //            facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Login", null);
