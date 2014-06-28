@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+        <div class="col-md-12" style="margin:10px">
+            <div class=" panel-heading label-primary">
+                <b style="text-transform: uppercase;font-size: 1.2em;color:white"><span class="glyphicon glyphicon-log-in"> </span>&nbsp;Edit Profile</b>&nbsp;
+            </div> 
+            <div class="col-md-12 panel-body" style="background-color:#f8f8f8">
+                <h:form style="text-align: initial">
+                    <div class="col-md-8">
+                        <div class="col-md-12" style="margin-bottom:10px ">
+                            <div class="col-md-4">Full Name</div>
+                            <div class="col-md-8">
+                                <h:inputText   class="form-control" value="#{loginBean.user.fullName}"></h:inputText>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin-bottom:10px ">
+                            <div class="col-md-4">UserName</div>
+                            <div class="col-md-8">
+                                <h:inputText   class="form-control"  disabled="true" value="#{loginBean.user.userName}"></h:inputText>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin-bottom:10px ">
+                            <div class="col-md-4">PassWord</div>
+                            <div class="col-md-8">
+                                <h:inputSecret  class="form-control" value="#{loginBean.user.pwd}"></h:inputSecret>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin-bottom:10px ">
+                            <div class="col-md-4">Email</div>
+                            <div class="col-md-8">
+                                <h:inputText   class="form-control" value="#{loginBean.user.email}"></h:inputText>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin-bottom:10px ">
+                            <div class="col-md-4">Birthday</div>
+                            <div class="col-md-8">
+                                <h:inputText   class="form-control" value="#{loginBean.user.birthday}"></h:inputText>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin-bottom:10px ">
+                            <div class="col-md-4">Address</div>
+                            <div class="col-md-8">
+                                <h:inputText   class="form-control" value="#{loginBean.user.address}"></h:inputText>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin-bottom:10px ">
+                            <div class="col-md-4">Phone</div>
+                            <div class="col-md-8">
+                                <h:inputText   class="form-control" value="#{loginBean.user.phone}"></h:inputText>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin-bottom:10px ">
+                            <div class="col-md-4">Gender</div>
+                            <div class="col-md-8">
+                                <c:if test="${loginBean.user.gender == '1'}">
+                                    <h:inputText   class="form-control" value="Male"></h:inputText>
+                                </c:if>
+                                <c:if test="${loginBean.user.gender == '0'}">
+                                    <h:inputText   class="form-control" value="Female"></h:inputText>
+                                </c:if>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <div class="col-md-4">
+                        <img src="./img/avataruser.png" width="" class="img-thumbnail"></img>
+                        <div class="col-md-12">
+                            <h:inputFile class="form-control"  id="file" required="false" ></h:inputFile>
+                        </div>
+                    </div>
+                    <div class="col-md-12 label label-primary" style="margin-bottom:10px">
+                        <center>
+                            <h:commandButton class="btn btn-danger" action="a" value="Edit"></h:commandButton>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <h:commandButton class="btn btn-success" action="a" value="Cancer"></h:commandButton>
+                        </center>
+                    </div>
+
+                </h:form>
+            </div>   
+        </div> 
+
+    </h:body>
+
+</html>

@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+        <div class="col-md-12" style="margin:10px">
+            <div class=" panel-heading label-success">
+                <b style="text-transform: uppercase;font-size: 1.2em;color:white">Hello &nbsp; #{loginBean.user.userName}
+                </b>&nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                <a href="#" class="label label-success" style="color: while"><span class="glyphicon glyphicon-log-out"> </span>&nbsp;Logout</a>
+            </div> 
+            <div class="col-md-12 panel-body" style="background-color:#f8f8f8">
+                <h:form style="text-align: initial">
+                    <div class="col-md-12">
+                        <center>
+                        <h:graphicImage value="/img/avatar.jpg" class="img-thumbnail" width="200" height="171" />
+                        </center>
+                    </div>
+                    <div class="col-md-12 ">
+                        <a href="newpost.jsf" class="btn btn-primary " style="margin:10px">New Post</a>
+                        <a href="profileUser.jsf" class="btn btn-primary " style="margin:10px">Edit Profile </a>
+                    </div>
+                </h:form>
+            </div>   
+        </div>   
+
+
+    </h:body>
+
+</html>

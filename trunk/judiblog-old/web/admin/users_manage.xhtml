@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:head>
+        <title>Users Management</title>
+    </h:head>
+
+    <h:body>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Users Management</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                    <tr>
+                                        <th>User name</th>
+                                        <th>Full name</th>
+                                        <th>Birthday</th>
+                                        <th>Gender</th>
+                                        <th>ID Card</th>
+                                        <th>Address</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <c:forEach begin="1" end="100" step="1">
+                                        <tr class="odd gradeX">
+                                            <td><a class="" href="#">haivv</a></td>
+                                            <td>Vũ Văn Hải</td>
+                                            <td>12/06/1991</td>
+                                            <td>Male</td>
+                                            <td>123456789</td>
+                                            <td>Cẩm Thủy, Thanh Hóa</td>
+                                            <td>haivv.itedu@gmail.com</td>
+                                            <td>0905685591</td>
+                                            <td>Public</td>
+                                        </tr>
+                                    </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </h:body>
+
+</html>

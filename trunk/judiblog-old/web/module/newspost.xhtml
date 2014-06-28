@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Facelets Template</title>
+    </h:head>
+    <div class="col-md-12" style="margin:10px">
+        <div class=" panel-heading label-primary">
+            <b style="text-transform: uppercase;font-size: 1.2em;color:white"><span class="glyphicon glyphicon-log-in"> 
+                </span>&nbsp;News Post</b>&nbsp;
+        </div> 
+        <div class="col-md-12 panel-body" style="background-color:#f8f8f8">
+            <h:form>
+                <div class="col-md-12" style="margin-bottom: 5px">
+                    <div class="col-md-2"><b>Title</b></div>
+                    <div class="col-md-10"><h:inputText class="form-control" value=""></h:inputText></div>
+                </div>
+                <div class="col-md-12" style="margin-bottom: 5px">
+                    <div class="col-md-2"><b>Category</b></div>
+                    <div class="col-md-4">
+                        <h:selectOneMenu value="a" class="form-control">
+                            <f:selectItem id="item1" itemLabel="News" itemValue="1" />
+                            <f:selectItem id="item2" itemLabel="Sports" itemValue="2" />
+                            <f:selectItem id="item3" itemLabel="Music" itemValue="3" />
+                            <f:selectItem id="item4" itemLabel="Java" itemValue="4" />
+                            <f:selectItem id="item5" itemLabel="Web" itemValue="5" />
+                        </h:selectOneMenu>
+                    </div>
+                    <div class="col-md-2"><b>Companent</b></div>
+                    <div class="col-md-4">
+                        <h:selectOneMenu value="b" class="form-control">
+                            <f:selectItem id="item6" itemLabel="News" itemValue="1" />
+                            <f:selectItem id="item7" itemLabel="Sports" itemValue="2" />
+                            <f:selectItem id="item8" itemLabel="Music" itemValue="3" />
+                            <f:selectItem id="item9" itemLabel="Java" itemValue="4" />
+                            <f:selectItem id="item10" itemLabel="Web" itemValue="5" />
+                        </h:selectOneMenu>
+                    </div>
+                </div>
+                <div class="col-md-12" style="margin-bottom: 5px">
+                    <h:inputTextarea  rows="20" class="col-md-12 form-control"></h:inputTextarea>
+                </div>
+
+                <div class="col-md-12" style="margin-bottom: 5px">
+                    <div class="col-md-1"><b>Upload</b></div>
+                    <div class="col-md-11">
+                        <h:inputFile id="file" value="a"/>
+                    </div>
+                </div>
+                <div class="col-md-12" style="margin-bottom: 5px">
+                    <div class="col-md-2 col-md-offset-10">
+                        <h:commandButton value="Public" class="btn btn-primary"></h:commandButton>
+                    </div>
+                </div>
+
+            </h:form>
+        </div>
+    </div>
+    <h:body>
+
+    </h:body>
+
+</html>
