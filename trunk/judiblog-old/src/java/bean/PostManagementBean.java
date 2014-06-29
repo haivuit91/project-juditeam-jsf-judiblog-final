@@ -35,8 +35,9 @@ public class PostManagementBean {
     }
     
     public String preEdit(Post post){
+        System.out.println(post.getTitle());
         this.post = post;
-        return "new-post";
+        return "new-post.jsf";
     }
     public void detete(int postID) {
         FacesMessage mess;
