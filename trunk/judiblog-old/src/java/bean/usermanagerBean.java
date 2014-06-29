@@ -26,6 +26,7 @@ import model.entities.User;
 @RequestScoped
 public class usermanagerBean implements Serializable {
 
+    private String searchbyUser;
     private final HttpServletRequest request;
     private final FacesContext fc;
     private final HttpSession session;
@@ -46,4 +47,26 @@ public class usermanagerBean implements Serializable {
         return userList;
     }
 
+    public List<User> search() {
+        
+        List<User> userList = USER_SERVICE.findUserByUserName(searchbyUser);
+        return userList;
+    }
+
+    /**
+     * @return the searchbyUsername
+     */
+    public String searchbyUser() {
+        return searchbyUser;
+    }
+
+    /**
+     * @param searchbyUsername the searchbyUsername to set
+     */
+    public void setSearchbyUsername(String searchbyUser) {
+        this.searchbyUser = searchbyUser;
+    }
+
+    
+  
 }
