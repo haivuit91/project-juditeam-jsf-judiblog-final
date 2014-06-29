@@ -36,8 +36,8 @@ public class PostDAO implements PostDAOService {
         item.setContent(rs.getString("content"));
         item.setImagePath(rs.getString("imagePath"));
         item.setPostDate(rs.getDate("postDate"));
-        item.setUserID(UserDAO.getInstance().getUserByID(rs.getInt("userID")));
-        item.setCatID(CategoryDAO.getInstance().getCategoryByID(rs.getInt("catID")));
+        item.setUser(UserDAO.getInstance().getUserByID(rs.getInt("userID")));
+        item.setCategory(CategoryDAO.getInstance().getCategoryByID(rs.getInt("catID")));
         item.setIsActive(rs.getBoolean("isActive"));
         return item;
     }
@@ -99,8 +99,8 @@ public class PostDAO implements PostDAOService {
         sm.setString(2, post.getContent());
         sm.setString(3, post.getImagePath());
         sm.setDate(4, (Date) post.getPostDate());
-        sm.setInt(5, post.getUserID().getUserID());
-        sm.setInt(6, post.getCatID().getCatID());
+        sm.setInt(5, post.getUser().getUserID());
+        sm.setInt(6, post.getCategory().getCatID());
         sm.setBoolean(7, post.isIsActive());
         sm.setInt(8, post.getPostID());
         return sm.executeUpdate() == 1;
@@ -115,8 +115,8 @@ public class PostDAO implements PostDAOService {
         sm.setString(2, post.getContent());
         sm.setString(3, post.getImagePath());
         sm.setDate(4, (Date) post.getPostDate());
-        sm.setInt(5, post.getUserID().getUserID());
-        sm.setInt(6, post.getCatID().getCatID());
+        sm.setInt(5, post.getUser().getUserID());
+        sm.setInt(6, post.getCategory().getCatID());
         sm.setBoolean(7, post.isIsActive());
         return sm.executeUpdate() == 1;
     }
