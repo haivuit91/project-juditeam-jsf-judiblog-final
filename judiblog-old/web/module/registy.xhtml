@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -23,7 +23,7 @@
                         <div class="col-md-12" style="margin-bottom: 5px">
                             <div class="col-md-2" style="font-weight: bold">Username:</div>
                             <div class="col-md-6">
-                                <h:inputText  value="" id="username" class="form-control">
+                                <h:inputText  value="" id="username" class="form-control" p:placeholde="abc">
                                     <f:validateLength minimum="5" maximum="10" />
                                 </h:inputText>
                             </div>
@@ -128,36 +128,14 @@
                         <!--Birthday-->
                         <div class="col-md-12" style="margin-bottom: 5px">
                             <div class="col-md-2" style="font-weight: bold">Birthday</div>
-                            <div class="col-md-2">
-                                <h:selectOneMenu  class="form-control" value="#{userData.data}">
-                                    <f:selectItem itemValue="1" itemLabel="Item 1" />
-                                    <f:selectItem itemValue="2" itemLabel="Item 2" />
-                                    <f:selectItem itemValue="3" itemLabel="Item 3" />
-                                    <f:selectItem itemValue="4" itemLabel="Item 4" />
-                                    <f:selectItem itemValue="5" itemLabel="Item 5" />				
-                                </h:selectOneMenu>
+                            <div class="col-md-6">
+                                <h:inputText class="datetimepicker  form-control" value="" id="birthday" p:placeholder="">
+                                    <f:convertDateTime pattern="dd/MM/yyyy" />
+                                </h:inputText>
                             </div>
-                            <div class="col-md-2">
-                                <h:selectOneMenu class="form-control" value="#{userData.data}">
-                                    <f:selectItem itemValue="1" itemLabel="Item 1" />
-                                    <f:selectItem itemValue="2" itemLabel="Item 2" />
-                                    <f:selectItem itemValue="3" itemLabel="Item 3" />
-                                    <f:selectItem itemValue="4" itemLabel="Item 4" />
-                                    <f:selectItem itemValue="5" itemLabel="Item 5" />				
-                                </h:selectOneMenu>
-                            </div>
-                            <div class="col-md-2">
-                                <h:selectOneMenu class="form-control" value="#{userData.data}">
-                                    <f:selectItem itemValue="1" itemLabel="Item 1" />
-                                    <f:selectItem itemValue="2" itemLabel="Item 2" />
-                                    <f:selectItem itemValue="3" itemLabel="Item 3" />
-                                    <f:selectItem itemValue="4" itemLabel="Item 4" />
-                                    <f:selectItem itemValue="5" itemLabel="Item 5" />				
-                                </h:selectOneMenu>
-                            </div>
-                            <div class="col-md-4">
-                                <h:message for="phone" style="color:red" /> 
-                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <h:messages for="phone" style="color:red" /> 
                         </div>
 
                         <div class="col-md-12" style="margin-bottom: 5px">

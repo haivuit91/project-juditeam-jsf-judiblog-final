@@ -3,8 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:pt="http://code.google.com/ck-jsf-editor"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -22,31 +22,31 @@
                         <div class="col-md-12" style="margin-bottom:10px ">
                             <div class="col-md-4">Full Name</div>
                             <div class="col-md-8">
-                                <h:inputText   class="form-control" value="#{loginBean.user.fullName}"></h:inputText>
+                                <h:inputText  class="form-control" value=""  p:placeholder="#{loginBean.user.fullName}">></h:inputText>
                             </div>
                         </div>
                         <div class="col-md-12" style="margin-bottom:10px ">
                             <div class="col-md-4">UserName</div>
                             <div class="col-md-8">
-                                <h:inputText   class="form-control"  disabled="true" value="#{loginBean.user.userName}"></h:inputText>
+                                <h:inputText   class="form-control"  disabled="true" value=""  p:placeholder="#{loginBean.user.userName}"></h:inputText>
                             </div>
                         </div>
                         <div class="col-md-12" style="margin-bottom:10px ">
                             <div class="col-md-4">PassWord</div>
                             <div class="col-md-8">
-                                <h:inputSecret  class="form-control" value="#{loginBean.user.pwd}"></h:inputSecret>
+                                <h:inputSecret  class="form-control" value=""  p:placeholder="#{loginBean.user.pwd}"></h:inputSecret>
                             </div>
                         </div>
                         <div class="col-md-12" style="margin-bottom:10px ">
                             <div class="col-md-4">Email</div>
                             <div class="col-md-8">
-                                <h:inputText   class="form-control" value="#{loginBean.user.email}"></h:inputText>
+                                <h:inputText   class="form-control" value=""  p:placeholder="#{loginBean.user.email}"></h:inputText>
                             </div>
                         </div>
                         <div class="col-md-12" style="margin-bottom:10px ">
                             <div class="col-md-4">Birthday</div>
                             <div class="col-md-8">
-                                 <h:inputText class="datetimepicker form-control" value="#{loginBean.user.birthday}" id="birthday" pt:placeholder="Enter birthday">
+                                 <h:inputText class="datetimepicker form-control" value="#{loginBean.user.birthday}" id="birthday" p:placeholder="Enter text">
                                         <f:convertDateTime pattern="dd/MM/yyyy" />
                                     </h:inputText>
                             </div>
@@ -54,31 +54,32 @@
                         <div class="col-md-12" style="margin-bottom:10px ">
                             <div class="col-md-4">Address</div>
                             <div class="col-md-8">
-                                <h:inputText   class="form-control" value="#{loginBean.user.address}"></h:inputText>
+                                <h:inputText   class="form-control" value=""  p:placeholder="#{loginBean.user.address}"></h:inputText>
                             </div>
                         </div>
                         <div class="col-md-12" style="margin-bottom:10px ">
                             <div class="col-md-4">Phone</div>
                             <div class="col-md-8">
-                                <h:inputText   class="form-control" value="#{loginBean.user.phone}"></h:inputText>
+                                <h:inputText   class="form-control" value="" p:placeholder="#{loginBean.user.phone}"></h:inputText>
                             </div>
                         </div>
                         <div class="col-md-12" style="margin-bottom:10px ">
                             <div class="col-md-4">Gender</div>
                             <div class="col-md-8">
                                 <c:if test="${loginBean.user.gender == '1'}">
-                                    <h:inputText   class="form-control" value="Male"></h:inputText>
+                                    <h:inputText   class="form-control" value="" p:placeholder="Male"></h:inputText>
                                 </c:if>
                                 <c:if test="${loginBean.user.gender == '0'}">
-                                    <h:inputText   class="form-control" value="Female"></h:inputText>
+                                    <h:inputText   class="form-control" value=""  p:placeholder="Female"></h:inputText>
                                 </c:if>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <img src="./img/avataruser.png" width="" class="img-thumbnail"></img>
+                        <center>
+                            <img src="./img/avataruser.png" width="260px" height="300px" class="img-thumbnail"></img></center>
                         <div class="col-md-12">
-                            <h:inputFile class="form-control"   id="file" ></h:inputFile>
+                            <h:inputFile class="form-control" id="file" ></h:inputFile>
                         </div>
                     </div>
                     <div class="col-md-12 label label-primary" style="margin-bottom:10px">
