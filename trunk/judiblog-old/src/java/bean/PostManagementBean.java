@@ -22,27 +22,33 @@ import model.entities.Post;
  */
 @ManagedBean
 @RequestScoped
-public class PostManagerBean {
+public class PostManagementBean {
 
     /**
-     * Creates a new instance of PostManagerBean
+     * Creates a new instance of PostManagementBean
      */
     private final PostDAOService postService = PostDAO.getInstance();
     private final FacesContext facesContext;
-
-    public PostManagerBean() {
+    private Post post;
+    public PostManagementBean() {
         this.facesContext = FacesContext.getCurrentInstance();
     }
-
+    
+    public String preEdit(Post post){
+        this.post = post;
+        return "new-post";
+    }
     public void detete(int postID) {
+        FacesMessage mess;
         try {
             if (postService.deletePost(postID)) {
-                System.out.println("ok");
+                mess = new FacesMessage("Success!");
             } else {
-                System.out.println("fail");
+               mess = new FacesMessage("fail!");
             }
+             facesContext.addMessage("result", mess);
         } catch (Exception ex) {
-            Logger.getLogger(PostManagerBean.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PostManagementBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -57,7 +63,7 @@ public class PostManagerBean {
             }
             facesContext.addMessage("result", mes);
         } catch (Exception ex) {
-            Logger.getLogger(PostManagerBean.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PostManagementBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -66,9 +72,20 @@ public class PostManagerBean {
             List<Post> listPost = postService.getListPost();
             return listPost;
         } catch (Exception ex) {
-            Logger.getLogger(PostManagerBean.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PostManagementBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
 
+    
+    
+    
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
+    
 }
