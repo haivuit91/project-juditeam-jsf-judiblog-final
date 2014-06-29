@@ -12,27 +12,26 @@
 
     <h:body>
         <div class="col-md-12" style="margin:10px">
-            <div class=" panel-heading label-success">
-                <b style="text-transform: uppercase;font-size: 1.2em;color:white">Hello &nbsp; #{loginBean.user.userName}
-                </b>&nbsp;
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                <a href="home.jsf" class="label label-success" style="color: while"><span class="glyphicon glyphicon-log-out"> </span>&nbsp;Logout</a>
-            </div> 
-            <div class="col-md-12 panel-body" style="background-color:#f8f8f8">
-                <h:form style="text-align: initial">
+            <h:form style="text-align: initial">
+                <div class=" panel-heading label-success">
+                    <b style="text-transform: uppercase;font-size: 1.2em;color:white">Hello &nbsp; #{loginBean.user.userName}
+                    </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <h:commandButton  action="#{logoutBean.logout()}" class="btn btn-flickr btn-xs" style="" value="Logout"/>
+                </div> 
+                <div class="col-md-12 panel-body" style="background-color:#f8f8f8">
+
                     <div class="col-md-12">
                         <center>
-                        <h:graphicImage value="/img/avatar.jpg" class="img-thumbnail" width="200" height="171" />
+                            <h:graphicImage value="/img/avatar.jpg" class="img-thumbnail" width="200" height="171" />
                         </center>
                     </div>
                     <div class="col-md-12 ">
                         <a href="newpost.jsf" class="btn btn-primary " style="margin:10px">New Post</a>
                         <a href="profile-user.jsf" class="btn btn-primary " style="margin:10px">Edit Profile </a>
                     </div>
-                </h:form>
-            </div>   
+
+                </div>   
+            </h:form>
         </div>   
     </h:body>
 </html>
