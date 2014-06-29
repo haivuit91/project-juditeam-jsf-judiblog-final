@@ -18,22 +18,22 @@ public class Post {
     private String content;
     private String imagePath;
     private Date postDate;
-    private User userID;
-    private Category catID;
+    private User user;
+    private Category category;
     private boolean isActive;
 
     public Post() {
 
     }
 
-    public Post(int postID, String title, String content, String imagePath, Date postDate, User userID, Category catID, boolean isActive) {
+    public Post(int postID, String title, String content, String imagePath, Date postDate, User user, Category category, boolean isActive) {
         this.postID = postID;
         this.title = title;
         this.content = content;
         this.imagePath = imagePath;
         this.postDate = postDate;
-        this.userID = userID;
-        this.catID = catID;
+        this.user = user;
+        this.category = category;
         this.isActive = isActive;
     }
 
@@ -77,20 +77,20 @@ public class Post {
         this.postDate = postDate;
     }
 
-    public User getUserID() {
-        return userID;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserID(User userID) {
-        this.userID = userID;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Category getCatID() {
-        return catID;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCatID(Category catID) {
-        this.catID = catID;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public boolean isIsActive() {

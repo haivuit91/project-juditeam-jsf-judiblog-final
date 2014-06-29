@@ -29,7 +29,7 @@ public class CategoryDAO implements CategoryDAOService {
     @Override
     public Category getCategoryByID(int catID) throws Exception {
         Category category = new Category();
-        String sql = "select * from tbl_category where catID =? and isActive = 'true' ";
+        String sql = "select * from tbl_category where catID =? and isActive =1 ";
         Connection conn = ConnectionFactory.getConnection();
         PreparedStatement sm = conn.prepareStatement(sql);
         sm.setInt(1, catID);
@@ -45,7 +45,7 @@ public class CategoryDAO implements CategoryDAOService {
     @Override
     public Category getCategoryByName(String catName) throws Exception {
         Category category = new Category();
-        String sql = "select * from tbl_category where catName =? and isActive = 'true' ";
+        String sql = "select * from tbl_category where catName =? and isActive =1 ";
         Connection conn = ConnectionFactory.getConnection();
         PreparedStatement sm = conn.prepareStatement(sql);
         sm.setString(1, catName);
