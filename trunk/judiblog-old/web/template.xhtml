@@ -9,10 +9,14 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet name="./css/bootstrap.css"/>
-        <h:outputScript name="./js/jquery-1.10.2.js"/>
-        <h:outputScript name="./js/bootstrap.js"/>
-        <h:outputStylesheet library="css" name="bootstrap.css"/>
+        <h:outputStylesheet library="css" name="bootstrap.css" />
+        <h:outputStylesheet library="fonts/css" name="font-awesome.css" />
+        <h:outputStylesheet library="css/plugins/dataTables" name="dataTables.bootstrap.css" />
+        <h:outputStylesheet library="css" name="sb-admin.css" />
+        <!--Date JQuery-->
+        <h:outputStylesheet library="css" name="bootstrap-datetimepicker.min.css" />
+        <h:outputStylesheet library="css" name="jquery-ui-1.9.2.css" />
+
         <style>
             body{
                 padding: 80px;
@@ -55,6 +59,29 @@
                 bottom
             </ui:insert>
         </div>
+
+        <h:outputScript name="./js/jquery-1.10.2.js" />
+        <h:outputScript name="./js/bootstrap.min.js" />
+        <h:outputScript name="./js/jquery.dataTables.js" />
+        <h:outputScript name="./js/dataTables.bootstrap.js" />
+        <h:outputScript name="./js/sb-admin.js" />
+        <!--Date JQuery-->
+        <h:outputScript name="./js/bootstrap-datetimepicker.min.js" />
+        <h:outputScript name="./js/jquery-ui-1.9.2.js" />
+        <script type="text/javascript">
+
+            $(document).ready(function() {
+                $('#dataTables').dataTable();
+            });
+
+            $(".datetimepicker").datepicker();
+
+
+        </script>
+
+
+
+
     </h:body>
 
 </html>
