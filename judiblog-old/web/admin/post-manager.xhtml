@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
 
     <body>
 
@@ -17,37 +18,57 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                List post
-                            </div>
-
-                            <div class="table">
-                                <f:view>
-                                    <h:form>
-                                        <h:dataTable value="#{postManagerBean.getListPost()}" var="item" class="table table-bor table-hover" id="dataTables">
-                                            <h:column>
-                                                <f:facet name="header">Title</f:facet>
-                                                <a href="dsdsd">${item.title}</a>
-                                            </h:column>
-                                            <h:column>
-                                                <f:facet name="header">Date</f:facet>
-                                                sdsdsdsd
-                                            </h:column>
-                                            <h:column>
-                                                <f:facet name="header">User</f:facet>
-                                                dsds
-                                            </h:column>
-                                            <h:column class="col-xs-1">
-                                                <f:facet name="header">Action</f:facet>
-                                                dsdsdsd
-                                            </h:column>
-                                        </h:dataTable>
-                                    </h:form>
-                                </f:view>
-                            </div>
+                        <div class="alert alert-warning">
+                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                           
                         </div>
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">List Post</div>
+                            <f:view>
+                                <h:form>
+                                    <h:dataTable value="#{postManagerBean.listPost}" var="item" headerClass="text-center"  styleClass="table table-hover table-bordered">
+                                        <h:column>
+                                            <f:facet name="header" >
+                                                <h:outputText value="Title"></h:outputText>
+                                            </f:facet>
+                                            <h:link value="#{item.title}" coords="fd"/>
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Date"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.postDate}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Category"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.category.catName}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="User"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.user.userName}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Action"/>
+                                            </f:facet>
+                                            <h:commandLink action="#{postManagerBean.detete(item.postID)}" value="Delete"/>
+                                            <h:commandLink action="#{postManagerBean.active(item.postID, !item.isActive)}" value="#{item.isActive ? 'Disable':'Enable'}" style="padding-left: 10px"/>
+                                        </h:column>
+
+                                    </h:dataTable>
+                                </h:form>
+                            </f:view>
+                        </div>
+                    </div>
+
                 </div>
             </ui:define>
 
