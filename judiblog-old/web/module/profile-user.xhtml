@@ -46,9 +46,9 @@
                         <div class="col-md-12" style="margin-bottom:10px ">
                             <div class="col-md-4">Birthday</div>
                             <div class="col-md-8">
-                                <h:inputText class="datetimepicker form-control" value="#{loginBean.user.birthday}" id="birthday" pt:placeholder="Enter birthday">
-                                    <f:convertDateTime pattern="dd/MM/yyyy" />
-                                </h:inputText>
+                                 <h:inputText class="datetimepicker form-control" value="#{loginBean.user.birthday}" id="birthday" pt:placeholder="Enter birthday">
+                                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                                    </h:inputText>
                             </div>
                         </div>
                         <div class="col-md-12" style="margin-bottom:10px ">
@@ -72,13 +72,6 @@
                                 <c:if test="${loginBean.user.gender == '0'}">
                                     <h:inputText   class="form-control" value="Female"></h:inputText>
                                 </c:if>
-                            </div>
-                        </div>
-                        <div class="col-md-12" style="margin-bottom:10px ">
-                            <div class="col-md-2"><label>Birthday:</label></div>
-                            <div class="col-md-10">
-                                <div class="form-group">
-                                </div>
                             </div>
                         </div>
                     </div>
