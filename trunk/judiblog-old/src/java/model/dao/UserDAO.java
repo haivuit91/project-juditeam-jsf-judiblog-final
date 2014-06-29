@@ -5,6 +5,7 @@
  */
 package model.dao;
 
+import bean.signupBean;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +15,7 @@ import java.util.List;
 import model.dao.service.UserDAOService;
 import model.entities.Role;
 import model.entities.User;
+import util.Support;
 
 /**
  *
@@ -313,7 +315,9 @@ public class UserDAO implements UserDAOService {
             pstmt.setString(1, user.getUserName());
             pstmt.setString(2, user.getPwd());
             pstmt.setString(3, user.getFullName());
-            pstmt.setDate(4, (java.sql.Date) user.getBirthday());
+//            pstmt.setDate(4, (java.sql.Date) user.getBirthday());
+            java.util.Date date = user.getBirthday();
+            pstmt.setDate(4, new java.sql.Date(date.getTime()));
             pstmt.setInt(5, user.getGender());
             pstmt.setString(6, user.getIdCard());
             pstmt.setString(7, user.getAddress());
