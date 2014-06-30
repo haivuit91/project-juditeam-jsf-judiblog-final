@@ -159,4 +159,11 @@ public class Support {
         User user = (User)session.getAttribute(util.Constants.CURRENT_USER);
         return user;
     }
+    /**
+     * get current date 
+     * @return sql date
+     */
+    public static Date getCurrentDate(){
+        return new Date((new java.util.Date()).getTime());
+    }
 }
