@@ -11,9 +11,8 @@
     </h:head>
 
     <h:body>
-        <div class="col-md-12" style="margin:10px">
-            <h:form style="text-align: initial">
-                <div class=" panel-heading label-success">
+            <h:form style="text-align: initial" >
+                <div class=" panel-heading label-success" style="margin:10px">
                     <b style="text-transform: uppercase;font-size: 1.2em;color:white">Hello &nbsp; #{loginBean.user.userName}
                     </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <h:commandButton  action="#{logoutBean.logout()}" class="btn btn-flickr btn-xs" style="" value="Logout"/>
@@ -32,6 +31,5 @@
 
                 </div>   
             </h:form>
-        </div>   
     </h:body>
 </html>

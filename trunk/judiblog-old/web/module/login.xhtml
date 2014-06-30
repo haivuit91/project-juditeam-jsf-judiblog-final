@@ -11,26 +11,25 @@
     </h:head>
 
     <h:body>
-        <div class=" panel-heading" style="background-color:#086bb0;margin-top: 10px">
-            <b style="text-transform: uppercase;font-size: 1.2em;color:white">Login</b>
-        </div> 
-        <div class="col-md-12 panel-body" style="background-color:#f8f8f8">
-            <h:form style="text-align: initial">
-                <div class="col-md-12">
-                    <h:outputLabel value="Username" class="h5 col-md-12" style=" font-weight: bold"/>
-                    <h:inputText value="#{loginBean.userName}" class="col-md-12 form-control">
-                    </h:inputText>
-                    <h:outputLabel value="Password" class=" h5 col-md-12" style=" font-weight: bold"/>
-                    <h:inputSecret value="#{loginBean.pwd}" class="col-md-12 form-control">
-                    </h:inputSecret><br></br>
-                </div>
-                <div class="col-md-12 ">
-                    <h:commandButton  action="#{loginBean.login()}" class="btn btn-danger col-md-4" style="margin:10px" value="Login"/>
-                    <a href="registy.jsf" class="btn btn-primary col-md-4" style="margin:10px">Registy</a>
-                </div>
-            </h:form>
-        </div>   
-
+            <div class=" panel-heading" style="background-color:#086bb0;margin-top: 10px">
+                <b style="text-transform: uppercase;font-size: 1.2em;color:white">Login</b>
+            </div> 
+            <div class="col-md-12 panel-body" style="background-color:#f8f8f8">
+                <h:form style="text-align: initial">
+                    <div class="col-md-12">
+                        <h:outputLabel value="Username" class="h5 col-md-12" style=" font-weight: bold"/>
+                        <h:inputText value="#{loginBean.userName}" class="col-md-12 form-control">
+                        </h:inputText>
+                        <h:outputLabel value="Password" class=" h5 col-md-12" style=" font-weight: bold"/>
+                        <h:inputSecret value="#{loginBean.pwd}" class="col-md-12 form-control">
+                        </h:inputSecret><br></br>
+                    </div>
+                    <div class="col-md-12 ">
+                        <h:commandButton  action="#{loginBean.login()}" class="btn btn-danger col-md-4" style="margin:10px" value="Login"/>
+                        <a href="registy.jsf" class="btn btn-primary col-md-4" style="margin:10px">Registy</a>
+                    </div>
+                </h:form>
+            </div>   
 
 
     </h:body>
