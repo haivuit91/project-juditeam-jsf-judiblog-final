@@ -23,56 +23,32 @@ import model.entities.User;
 @SessionScoped
 public class LoginBean {
 
-    private String userName;
-    private String pwd;
-    private User user;
-    private final HttpServletRequest httpServletRequest;
-    private FacesContext facesContext;
-    private FacesMessage facesMessage;
+    private final UserDAOService USER_SERVICE = UserDAO.getInstance();
+    private User user = new User();
+    private String message = "";
 
-    UserDAOService USER_SERVICE = UserDAO.getInstance();
-
-    public LoginBean() {
-        facesContext = FacesContext.getCurrentInstance();
-        httpServletRequest = (HttpServletRequest) facesContext.getExternalContext().getRequest();
-    }
-
-    public String login() {
-        if (USER_SERVICE.checkLogin(userName, pwd)) {
-            facesContext = FacesContext.getCurrentInstance();
-            user = USER_SERVICE.getUserByUserName(userName);
-            HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
-            session.setAttribute(util.Constants.CURRENT_USER, user);
-            return "./info-user.jsf";
-        } else {
-//            facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Login", null);
-//            facesContext.addMessage(null, facesMessage);
-//            httpServletRequest.getSession().setAttribute("error", "Login error");
-            return "./home.jsf";
+    
+    public String checkLogin(){
+        if(USER_SERVICE.checkLogin(getUser().getUserName(), getUser().getPwd())){
+            HttpSession session = util.Support.getSession();
+            session.setAttribute(util.Constants.CURRENT_USER, getUser());
+            return "home?faces-redirect=true";
+        }else{
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
+                    "Invalid Login!", "Please try again!"));
+            return "login";
         }
     }
-
-    public String getUserName() {
-        return userName;
+    
+    public String logout(){
+        HttpSession session = util.Support.getSession();
+        session.invalidate();
+        return "login";
     }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPwd() {
-        return pwd;
-    }
-
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
-    }
-
     /**
      * @return the user
      */
     public User getUser() {
-        user = USER_SERVICE.getUserByUserName(userName);
         return user;
     }
 
@@ -83,4 +59,17 @@ public class LoginBean {
         this.user = user;
     }
 
+    /**
+     * @return the message
+     */
+    public String getMessage() {
+        return message;
+    }
+
+    /**
+     * @param message the message to set
+     */
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }
