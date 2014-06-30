@@ -13,8 +13,8 @@
     <h:body>
             <h:form style="text-align: initial" >
                 <div class=" panel-heading label-success" style="margin:10px">
-                    <b style="text-transform: uppercase;font-size: 1.2em;color:white">Hello &nbsp; #{sessionScope.currentUser.fullName}
-                    </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <b style="text-transform: initial;font-size: 1em;color:white">Hello &nbsp; </b><b style="font-size:.8em;text-transform: initial;color:white">#{sessionScope.currentUser.fullName}</b>
+                    &nbsp;&nbsp;
                     <h:commandButton  action="#{loginBean.logout()}" class="btn btn-flickr btn-xs" style="" value="Logout"/>
                 </div> 
                 <div class="col-md-12 panel-body" style="background-color:#f8f8f8">
@@ -25,9 +25,9 @@
                         </center>
                     </div>
                     <div class="col-md-12 ">
-                        <a href="newpost.jsf" class="btn btn-primary " style="margin:10px">New Post</a>
-                        <a href="profile-user.jsf" class="btn btn-primary " style="margin:10px">Edit Profile </a>
-                        <a href="create-project.jsf" class="btn btn-primary " style="margin:10px">Create Project </a>
+                        <a href="newpost.jsf" class="btn-primary btn-xs " style="margin:5px">New Post</a>
+                        <a href="profile-user.jsf" class="btn-primary btn-xs" style="margin:5px">Edit Profile </a>
+                        <a href="create-project.jsf" class="btn-primary btn-xs" style="margin:5px">Create Project </a>
                     </div>
 
                 </div>   
