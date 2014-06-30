@@ -24,7 +24,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading text-center">
                                 <h:form>
-                                    <h:inputText value="#{userManager.searchbyUsername}"/>
+                                    <h:inputText value="#{userManager.setSearchbyUsername(searchbyUser)}"/>
                                 <h:commandButton action="#{userManager.search()}" value="Search"/>
                                 </h:form>
                                 List users
