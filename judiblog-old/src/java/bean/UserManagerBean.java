@@ -24,7 +24,7 @@ import model.entities.User;
  */
 @ManagedBean(name = "userManager", eager = true)
 @RequestScoped
-public class usermanagerBean implements Serializable {
+public class UserManagerBean implements Serializable {
 
     private String searchbyUser;
     private final HttpServletRequest request;
@@ -35,7 +35,7 @@ public class usermanagerBean implements Serializable {
 
     UserDAOService USER_SERVICE = UserDAO.getInstance();
 
-    public usermanagerBean() {
+    public UserManagerBean() {
         fc = FacesContext.getCurrentInstance();
         request = (HttpServletRequest) fc.getExternalContext().getRequest();
         params = fc.getExternalContext().getRequestParameterMap();
