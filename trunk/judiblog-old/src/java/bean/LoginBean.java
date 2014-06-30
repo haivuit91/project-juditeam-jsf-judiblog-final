@@ -21,7 +21,7 @@ import model.entities.User;
  */
 @ManagedBean
 @SessionScoped
-public class loginBean {
+public class LoginBean {
 
     private String userName;
     private String pwd;
@@ -32,7 +32,7 @@ public class loginBean {
 
     UserDAOService USER_SERVICE = UserDAO.getInstance();
 
-    public loginBean() {
+    public LoginBean() {
         facesContext = FacesContext.getCurrentInstance();
         httpServletRequest = (HttpServletRequest) facesContext.getExternalContext().getRequest();
     }

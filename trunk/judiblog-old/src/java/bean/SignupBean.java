@@ -19,12 +19,12 @@ import model.entities.User;
  */
 @ManagedBean
 @RequestScoped
-public class signupBean {
+public class SignupBean {
 
 public User user = new User();
 private Date birthday;
     UserDAOService USER_SERVICE = UserDAO.getInstance();
-    public signupBean() {
+    public SignupBean() {
         
     }
 
