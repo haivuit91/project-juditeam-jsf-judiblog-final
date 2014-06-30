@@ -16,6 +16,7 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Properties;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.context.FacesContext;
@@ -156,14 +157,35 @@ public class Support {
 
     public static User getCurrentUser() {
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-        User user = (User)session.getAttribute(util.Constants.CURRENT_USER);
+        User user = (User) session.getAttribute(util.Constants.CURRENT_USER);
         return user;
     }
+
     /**
-     * get current date 
+     * get current date
+     *
      * @return sql date
      */
-    public static Date getCurrentDate(){
+    public static Date getCurrentDate() {
         return new Date((new java.util.Date()).getTime());
+    }
+
+    /**
+     * 
+     * @param size length of code
+     * @return 
+     */
+    public static String randomCode(int size) {
+        String str01 = "abcdefghijklmnopqrstuvwxyz";
+        String str02 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String str03 = "0123456789";
+        String strValid = str01 + str02 + str03;
+        Random random = new Random();
+        String mystring = "";
+        for (int i = 0; i < size; i++) {
+            int randnum = random.nextInt(strValid.length());
+            mystring = mystring + strValid.charAt(randnum);
+        }
+        return mystring;
     }
 }
