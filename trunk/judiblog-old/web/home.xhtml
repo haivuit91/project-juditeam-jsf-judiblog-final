@@ -14,10 +14,10 @@
 
 
             <ui:define name="right1" >
-                <c:if test="${currentUser != null}">
+                <c:if test="#{sessionScope.currentUser != null}">
                     <ui:include src="module/infor-user.xhtml"/>
                 </c:if>
-                <c:if test="${currentUser == null}">
+                <c:if test="#{sessionScope.currentUser == null}">
                     <ui:include src="module/login.xhtml"/>
                 </c:if>
             </ui:define>
