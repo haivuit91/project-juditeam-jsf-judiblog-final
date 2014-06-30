@@ -181,11 +181,11 @@ public class Support {
         String str03 = "0123456789";
         String strValid = str01 + str02 + str03;
         Random random = new Random();
-        String mystring = "";
+        String result = "";
         for (int i = 0; i < size; i++) {
             int randnum = random.nextInt(strValid.length());
-            mystring = mystring + strValid.charAt(randnum);
+            result += strValid.charAt(randnum);
         }
-        return mystring;
+        return result;
     }
 }
