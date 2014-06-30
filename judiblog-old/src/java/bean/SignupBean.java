@@ -11,6 +11,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import model.dao.UserDAO;
 import model.dao.service.UserDAOService;
+import model.entities.Role;
 import model.entities.User;
 
 /**
@@ -21,11 +22,12 @@ import model.entities.User;
 @RequestScoped
 public class SignupBean {
 
-public User user = new User();
-private Date birthday;
+ public User user = new User();
+    private Date birthday;
     UserDAOService USER_SERVICE = UserDAO.getInstance();
+
     public SignupBean() {
-        
+
     }
 
     public User getUser() {
@@ -36,38 +38,21 @@ private Date birthday;
         this.user = user;
     }
 
-//    public static Date getBirthday() {
-//        return date;
-//    }
     public Date getBirthday() {
         return birthday;
     }
-    
-    
 
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
-    
-    
-    
-    public String createrUser(){               
-        
-//        if(USER_SERVICE.createUser(user)){
-//            return "home";
-//        }
-//        return "registy";
-        System.out.println(user.getUserID());
-        System.out.println(user.getUserName());
-        System.out.println(user.getPwd());
-        System.out.println(user.getFullName());
-        System.out.println(user.getBirthday());
-        System.out.println(user.getGender());
-        System.out.println(user.getIdCard());
-        System.out.println(user.getAddress());
-        System.out.println(user.getEmail());
-        System.out.println(user.getPhone());
-        System.out.println(user.getActive());
-        return null;
+
+    public String createrUser() {
+
+        Role r = new Role(1, "ds", "ds", 1);
+        user.setRole(r);
+        if (USER_SERVICE.createUser(user)) {
+            return "home";
+        }
+        return "registation";
     }
 }
