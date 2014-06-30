@@ -29,29 +29,33 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label>Project Name:</label>
-                                                    <h:inputText value="" class="form-control" id="projectName" pt:placeholder="Project Name"/>
+                                                    <h:inputText value="#{projectBean.project.projectName}" class="form-control" id="projectName" pt:placeholder="Project Name"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Start Date:</label>
-                                                    <h:inputText class="datetimepicker form-control" value="" id="startDate" pt:placeholder="Start date">
-                                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                                    <h:inputText class="datetimepicker form-control" value="#{projectBean.project.startDate}" id="startDate" pt:placeholder="Start date">
+                                                        <f:convertDateTime pattern="dd/MM/yyyy"/>
                                                     </h:inputText>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Duration:</label>
-                                                    <h:inputText value="" class="form-control" id="duration" pt:placeholder="Duration"/>
+                                                    <h:inputText value="#{projectBean.project.duration}" class="form-control" id="duration" pt:placeholder="Duration"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Project Type:</label>
-                                                    <h:inputText value="" class="form-control" id="projectType" pt:placeholder="Project Type"/>
+                                                    <h:selectOneMenu id="projectType" class="form-control" value="#{projectBean.projectType}"
+                                                                     converter="typeConverter" >
+                                                        <f:selectItems value="#{projectBean.types}" var="projectType"
+                                                                       itemValue="#{projectType}" itemLabel="#{projectType.typeName}" />
+                                                    </h:selectOneMenu>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Description:</label>
-                                                    <h:inputTextarea value="" class="form-control" id="descriptiton" pt:placeholder="Description"/>
+                                                    <h:inputTextarea value="#{projectBean.project.description}" class="form-control" id="descriptiton" pt:placeholder="Description"/>
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 text-center">
-                                                <h:commandButton class="btn btn-outline btn-primary" value="Submit"/>
+                                                <h:commandButton class="btn btn-outline btn-primary" value="Add Project" action="#{projectBean.createProject()}"/>
                                                 <button type="reset" class="btn btn-outline btn-primary">Reset</button>
                                             </div>
                                         </h:form>
