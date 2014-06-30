@@ -44,7 +44,7 @@ public class ProjectUserDAO implements ProjectUserDAOService {
                 pud.setProject_userID(rs.getInt("project_userID"));
                 pud.setUser(UserDAO.getInstance().getUserByID(rs.getInt("userID")));
                 pud.setProject(ProjectDAO.getInstance().getProjectByID(rs.getInt("projectID")));
-                pud.setCreater(rs.getInt("isCreate"));
+                pud.setCreater(rs.getInt("isCreater"));
                 pudList.add(pud);
             }
         } catch (ClassNotFoundException | SQLException e) {
@@ -117,10 +117,11 @@ public class ProjectUserDAO implements ProjectUserDAOService {
         List<User> userList = new ArrayList<>();
         try {
             Connection conn = ConnectionFactory.getConnection();
-            String sql = "select userID from tbl_user except "
-                    + "select userID from tbl_project_user where projectID = ?";
+            String sql = "select userID from tbl_user";
+//            String sql = "select userID from tbl_user except "
+//                    + "select userID from tbl_project_user where projectID = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, projectID);
+//            pstmt.setInt(1, projectID);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 User user = UserDAO.getInstance().getUserByID(rs.getInt("userID"));
@@ -156,7 +157,7 @@ public class ProjectUserDAO implements ProjectUserDAOService {
         boolean isCheck = false;
         try {
             Connection conn = ConnectionFactory.getConnection();
-            String sql = "insert into tbl_project_user(userID, projectID, getCreater) values(?,?,?)";
+            String sql = "insert into tbl_project_user(userID, projectID, isCreater) values(?,?,?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, pud.getUser().getUserID());
             pstmt.setInt(2, pud.getProject().getProjectID());
@@ -174,7 +175,7 @@ public class ProjectUserDAO implements ProjectUserDAOService {
         boolean isCheck = false;
         try {
             Connection conn = ConnectionFactory.getConnection();
-            String sql = "update tbl_project_user set userID = ?, projectID = ?, getCreater = ? where project_userID = ?";
+            String sql = "update tbl_project_user set userID = ?, projectID = ?, isCreater = ? where project_userID = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, pud.getUser().getUserID());
             pstmt.setInt(2, pud.getProject().getProjectID());
@@ -193,7 +194,7 @@ public class ProjectUserDAO implements ProjectUserDAOService {
         boolean isCheck = false;
         try {
             Connection conn = ConnectionFactory.getConnection();
-            String sql = "delete from tbl_project_user where projectID = ? and getCreater = 'false'";
+            String sql = "delete from tbl_project_user where projectID = ? and isCreater = 'false'";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, projectID);
             pstmt.executeUpdate();

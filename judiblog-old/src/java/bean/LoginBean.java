@@ -9,7 +9,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import model.dao.UserDAO;
 import model.dao.service.UserDAOService;
@@ -31,7 +30,9 @@ public class LoginBean {
     public String checkLogin(){
         if(USER_SERVICE.checkLogin(getUser().getUserName(), getUser().getPwd())){
             HttpSession session = util.Support.getSession();
-            session.setAttribute(util.Constants.CURRENT_USER, getUser());
+            User u = USER_SERVICE.getUserByUserName(getUser().getUserName());
+            session.setAttribute(util.Constants.CURRENT_USER, u);
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("curUser", u);
             return "home?faces-redirect=true";
         }else{
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,

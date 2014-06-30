@@ -58,6 +58,11 @@ public class ProjectType {
     public void setProjectList(List<Project> projectList) {
         this.projectList = projectList;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return true; //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

@@ -13,7 +13,7 @@
     <h:body>
             <h:form style="text-align: initial" >
                 <div class=" panel-heading label-success" style="margin:10px">
-                    <b style="text-transform: uppercase;font-size: 1.2em;color:white">Hello &nbsp; #{loginBean.user.userName}
+                    <b style="text-transform: uppercase;font-size: 1.2em;color:white">Hello &nbsp; #{sessionScope.currentUser.fullName}
                     </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <h:commandButton  action="#{loginBean.logout()}" class="btn btn-flickr btn-xs" style="" value="Logout"/>
                 </div> 
@@ -21,7 +21,7 @@
 
                     <div class="col-md-12">
                         <center>
-                            <h:graphicImage value="/img/avatar.jpg" class="img-thumbnail" width="200" height="171" />
+                            <h:graphicImage value="#{sessionScope.currentUser.pathImage}" class="img-thumbnail" width="200" height="171" />
                         </center>
                     </div>
                     <div class="col-md-12 ">
