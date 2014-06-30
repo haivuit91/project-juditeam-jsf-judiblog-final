@@ -32,7 +32,7 @@ public class LoginBean {
             HttpSession session = util.Support.getSession();
             User u = USER_SERVICE.getUserByUserName(getUser().getUserName());
             session.setAttribute(util.Constants.CURRENT_USER, u);
-            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("curUser", u);
+//            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentUser", u);
             return "home?faces-redirect=true";
         }else{
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
