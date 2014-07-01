@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./common.xhtml">
+
+            <ui:define name="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="page-header"><h1>Post Management</h1></div>
+                    </div>
+                </div>
+                <div class="row"><h:messages/></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <f:view>
+                            <h:form>
+                                <h:dataTable value="#{postManagementBean.listPost}" var="item" headerClass="text-center"  styleClass="table table-hover table-bordered">
+                                    <h:column>
+                                        <f:facet name="header" >
+                                            <h:outputText value="Title"></h:outputText>
+                                        </f:facet>
+                                        <h:commandLink value="${item.title}" action="#{postManagementBean.preEditPost(item)}">
+                                        
+                                        </h:commandLink>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Date"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.postDate}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Category"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.category.catName}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="User"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.user.userName}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Action"/>
+                                        </f:facet>
+                                        <h:commandLink action="#{postManagementBean.detete(item.postID)}" value="Delete"/>
+                                        <h:commandLink action="#{postManagementBean.active(item.postID, !item.isActive)}" value="#{item.isActive ? 'Disable':'Enable'}" style="padding-left: 10px"/>
+                                    </h:column>
+                                </h:dataTable>
+                            </h:form>
+<!--                            popup
+                            <h:panelGroup id="popup-edit">
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="col-md-9">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                                <h4 class="modal-title" id="myModalLabel"><i class="fa fa-list fa-fw"></i> Information user</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <ui:include src="module/new-post.xhtml"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </h:panelGroup>
+                            end popup-->
+
+                        </f:view>
+                    </div>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
