@@ -98,7 +98,37 @@ public class UserManagerBean implements Serializable {
         return ROLE_SERVICE.getRoles();
 
     }
+public void edituser()
+        
+{   String msg = "";
+    int userID = getUser().getUserID();
+    String username = getUser().getUserName();
+        String fullname = getUser().getFullName();
+        String newpass = getUser().getPwd();
+        String address = getUser().getAddress();
+        String email = getUser().getEmail();
+        String phone = getUser().getPhone();
+      //  int role = getUser().getRole().getRoleID();
+//        Role roleID = ROLE_SERVICE.getRoleByID(role);
+//     Date birthday = getUser().getBirthday();
+//      java.sql.Date date = new java.sql.Date(birthday.getTime());
+      int gender = getUser().getGender();
+        String idcard = getUser().getIdCard();
+        User  user = new User(userID, username, phone, fullname, null, gender, idcard, address, email, phone, null, null, null, 1);
+         if (USER_SERVICE.updateProfile(user))
+         {
+          msg += " Successfully";
+          
+        } else {
+            msg += " Failed";
+        }
+        FacesMessage message = new FacesMessage(msg, "Message!");
 
+        FacesContext.getCurrentInstance()
+                .addMessage(null, message);
+            
+}
+     
     public void adduser() {
       String msg = "";
         String username = getUser().getUserName();
@@ -113,6 +143,7 @@ public class UserManagerBean implements Serializable {
       java.sql.Date date = new java.sql.Date(birthday.getTime());
       int gender = getUser().getGender();
         String idcard = getUser().getIdCard();
+        
        
         
         User user = new User(1, username, newpass, fullname, birthday, gender, idcard, address, email, phone, null, roleID, null, 1);

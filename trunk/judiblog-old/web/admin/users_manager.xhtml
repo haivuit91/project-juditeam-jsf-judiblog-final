@@ -34,7 +34,7 @@
                                     <f:view>
                                         <h:form>
                                             <h:dataTable value="#{userManager.allUser}" var="userList" class="table table-striped table-bordered table-hover" id="dataTables">
-                                                  <h:column>
+                                                <h:column>
                                                     <f:facet name="header">User ID</f:facet>
                                                     <h:outputText value="#{userList.userID}" />
                                                 </h:column>   
@@ -78,10 +78,11 @@
                                                     <h:outputText value="#{userList.active}" />
                                                 </h:column>
                                                 <h:column>
-                                                    <f:facet name="header">Delete</f:facet>
+                                                    <f:facet name="header">  Edit-Delete</f:facet>
+                                                    <h:commandButton value="Edit" immediate="true"
+                                                                     actionListener ="#{userManager.edituser()}" action="edit_user" />  -
                                                     <h:commandButton value="Delete" 
-                                                                     action="#{userManager.detete(userList.userID)}"  >                
-                                                    </h:commandButton>
+                                                                     action="#{userManager.detete(userList.userID)}"  />                
                                                 </h:column>
                                             </h:dataTable>
                                         </h:form>
