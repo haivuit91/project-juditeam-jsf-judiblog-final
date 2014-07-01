@@ -6,6 +6,7 @@
 
 package model.dao.service;
 
+import java.util.List;
 import model.entities.Category;
 
 /**
@@ -13,6 +14,13 @@ import model.entities.Category;
  * @author ThanhTuan
  */
 public interface CategoryDAOService {
+    
+    /**
+     * get all category
+     * @return 
+     */
+    List<Category> getList();
+    
     /**
      * get Category by ID
      * @param CategoryID 
