@@ -7,6 +7,8 @@ package bean;
 
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -44,10 +46,11 @@ public class ProjectBean {
     public ProjectBean() {
     }
 
+    private String key;
+    private String value;
     private Project project = new Project();
     private ProjectType projectType;
     private List<ProjectType> types;
-    private List<Project> projects;
     private String typeName;
 
     public String createProject() {
@@ -58,7 +61,7 @@ public class ProjectBean {
         java.sql.Date date = new java.sql.Date(startDate.getTime());
         int duration = getProject().getDuration();
         ProjectType type = this.projectType;
-        Project p = new Project(1, projectName, description, date, duration, type, 1);
+        Project p = new Project(1, projectName, description, date, duration, type, true);
         if (PROJECT_SERVICE.createProject(p)) {
             User user = util.Support.getCurrentUser();
             if (user == null) {
@@ -108,16 +111,37 @@ public class ProjectBean {
         java.sql.Date date = new java.sql.Date(startDate.getTime());
         int duration = getProject().getDuration();
         ProjectType type = this.projectType;
-        Project pro = new Project(projectID, projectName, description, date, duration, type, 1);
+        Project pro = new Project(projectID, projectName, description, date, duration, type, true);
         if(PROJECT_SERVICE.updateProject(pro)){
             return "project-manager";
         }
         return "update-project";
-//        System.out.println("thanh cong");
-////        }
-//        return null;
     }
 
+    public List<Project> findProject(){
+        List<Project> projectList = PROJECT_SERVICE.findProject(key, value);
+//        System.out.println("Thanh cong");
+//        return  null;
+        return projectList;
+    }
+    
+    public void activeProject(int postID, boolean isActive){
+        FacesMessage mes;
+         try {
+            if (PROJECT_SERVICE.activeProject(isActive, postID)) {
+                mes = new FacesMessage("Success!");
+
+            } else {
+                mes = new FacesMessage("Faile!");
+            }
+//            facesContext.addMessage("result", mes);
+
+        } catch (Exception ex) {
+            Logger.getLogger(PostManagementBean.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     /**
      * @return the projectType
      */
@@ -179,4 +203,21 @@ public class ProjectBean {
         List<Project> projectList = PROJECT_SERVICE.getProjects();
         return projectList;
     }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+    
 }
