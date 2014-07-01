@@ -136,17 +136,16 @@ public class UserManagerBean implements Serializable {
      * @return the DeleteUser
      */
   public void detete(int userID) {
-        FacesMessage mess;
-        System.out.println(getUser().getUserID());
-//        try {
-//            if (USER_SERVICE.deleteUser(userID)) {
-//                mess = new FacesMessage("Success!");
-//            } else {
-//               mess = new FacesMessage("fail!");
-//            }
-//             FacesContext.getCurrentInstance().addMessage("result", mess);
-//        } catch (Exception ex) {
-//            Logger.getLogger(PostManagementBean.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        FacesMessage mess;  
+        try {
+            if (USER_SERVICE.deleteUser(userID)) {
+                mess = new FacesMessage("Success!");
+            } else {
+               mess = new FacesMessage("fail!");
+            }
+             FacesContext.getCurrentInstance().addMessage("result", mess);
+        } catch (Exception ex) {
+            Logger.getLogger(PostManagementBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
   }
 }
