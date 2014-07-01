@@ -17,9 +17,8 @@ public class Role {
     private String roleName;
     private String pathImage;
     private int isActive;
-
     List<User> userList = null;
-    
+
     public Role() {
 
     }
@@ -71,4 +70,8 @@ public class Role {
         this.userList = userList;
     }
 
+    @Override
+        public boolean equals(Object obj) {
+        return true; //To change body of generated methods, choose Tools | Templates.
+    }
 }
