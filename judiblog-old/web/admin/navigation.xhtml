@@ -2,8 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <h:head>
         <title>Navigation</title>
@@ -24,16 +23,21 @@
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> ${loginBean.user.userName} <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user fa-fw"></i> #{sessionScope.currentUser.fullName} <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                        </li>
+                        <h:form>
+                            <li>
+                                <h:commandLink action="#{loginBean.logout()}"><i class="fa fa-user fa-fw"></i> User Profile</h:commandLink>
+                            </li>
+                            <li>
+                                <h:commandLink action="#{loginBean.logout()}"><i class="fa fa-gear fa-fw"></i> Settings</h:commandLink>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <h:commandLink action="#{loginBean.logout()}"><i class="fa fa-sign-out fa-fw"></i> Logout</h:commandLink>
+                            </li>
+                        </h:form>
                     </ul>
                 </li>
             </ul>
