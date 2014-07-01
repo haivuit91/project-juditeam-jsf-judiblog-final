@@ -47,6 +47,7 @@ public class ProjectBean {
     private Project project = new Project();
     private ProjectType projectType;
     private List<ProjectType> types;
+    private List<Project> projects;
     private String typeName;
 
     public String createProject() {
@@ -92,6 +93,29 @@ public class ProjectBean {
             System.out.println("Thanh cong");
         }
         return null;
+    }
+
+    public String updateProject(Project project1) {
+        this.project = project1;
+        return "update-project";
+    }
+
+    public String saveProject() {
+        int projectID = getProject().getProjectID();
+        String projectName = getProject().getProjectName();
+        String description = getProject().getDescription();
+        Date startDate = getProject().getStartDate();
+        java.sql.Date date = new java.sql.Date(startDate.getTime());
+        int duration = getProject().getDuration();
+        ProjectType type = this.projectType;
+        Project pro = new Project(projectID, projectName, description, date, duration, type, 1);
+        if(PROJECT_SERVICE.updateProject(pro)){
+            return "project-manager";
+        }
+        return "update-project";
+//        System.out.println("thanh cong");
+////        }
+//        return null;
     }
 
     /**
