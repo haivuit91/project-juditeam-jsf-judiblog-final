@@ -11,49 +11,53 @@
         <title>Facelets Template</title>
     </h:head>
     <h:body>
-        <div class="col-md-12" style="margin:10px">
-            <div class="col-md-12 panel-body" style="background-color:#f8f8f8">
-                <h:form enctype="multipart/form-data">
-                    <div class="col-md-12" style="margin-bottom: 5px">
-                        <div class="col-md-2"><b>Title</b></div>
-                        <div class="col-md-10"><h:inputText  value="#{postManagementBean.post.title}" class="form-control"></h:inputText></div>
-                    </div>
-                    <div class="col-md-12" style="margin-bottom: 5px">
-                        <div class="col-md-2"><b>Category</b></div>
-                        <div class="col-md-4">
-                            <h:selectOneMenu value="#{postManagementBean.post.category}"  class="form-control">
-                                <f:converter converterId="converter.CategoryConverter"/>
-                                <f:selectItems value="#{postManagementBean.getListCategory()}" var="item" itemValue="#{item}" itemLabel="#{item.catName}"/>
-                            </h:selectOneMenu>
-                        </div>
-                        <div class="col-md-2"><b>User</b></div>
-                        <div class="col-md-4">
-                            <h:selectOneMenu value="#{postManagementBean.post.user}" class="form-control">
-                                 <f:converter converterId="UserConverter"/>
-                                <f:selectItems value="#{postManagementBean.getListUser()}" var="itemUser"  itemValue="${itemUser}" itemLabel="#{itemUser.userName}"/>
-                               
-                            </h:selectOneMenu>
-                        </div>
-                    </div>
-                    <div class="col-md-12" style="margin-bottom: 5px">
-                        <ck:editor uiColor="aed0ea" value="#{postManagementBean.post.content}" height="400px"/>
-                    </div>
-
-                    <div class="col-md-12" style="margin-bottom: 5px">
-                        <div class="col-md-1"><b>Upload</b></div>
-                        <div class="col-md-11">
-                            <h:inputFile id="file" value="#{postManagementBean.image}"/>
-                        </div>
-                    </div>
-                    <div class="col-md-12" style="margin-bottom: 5px">
-                        <div class="col-md-2 col-md-offset-10">
-                            <h:commandButton action="#{postManagementBean.submit(postManagementBean.post.postID)}" value="#{postManagementBean.action}" class="btn btn-primary"></h:commandButton>
-                        </div>
-                    </div>
-
-                </h:form>
+        <h:form enctype="multipart/form-data">
+            <h:inputText value="#{postManagementBean.post.postID}" style="display: none"/>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-2"><b>Title</b></div>
+                    <div class="col-md-10"><h:inputText  value="#{postManagementBean.post.title}" class="form-control"></h:inputText></div>
+                </div>
             </div>
-        </div>
+            <div class="row" style="padding-top: 10px">
+                <div class="col-md-12">
+                    <div class="col-md-2"><b>Category</b></div>
+                    <div class="col-md-4">
+                        <h:selectOneMenu value="#{postManagementBean.post.category}"  class="form-control">
+                            <f:converter converterId="converter.CategoryConverter"/>
+                            <f:selectItems value="#{postManagementBean.getListCategory()}" var="item" itemValue="#{item}" itemLabel="#{item.catName}"/>
+                        </h:selectOneMenu>
+                    </div>
+                    <div class="col-md-2"><b>User</b></div>
+                    <div class="col-md-4">
+                        <h:selectOneMenu value="#{postManagementBean.post.user}" class="form-control">
+                            <f:converter converterId="UserConverter"/>
+                            <f:selectItems value="#{postManagementBean.getListUser()}" var="itemUser"  itemValue="${itemUser}" itemLabel="#{itemUser.userName}"/>
+                        </h:selectOneMenu>
+                    </div>
+                </div>
+            </div>
+           <div class="row" style="padding-top: 10px">
+                <div class="col-md-12" style="margin-bottom: 5px">
+                    <ck:editor uiColor="aed0ea" value="#{postManagementBean.post.content}" height="300px"/>
+                </div>
+            </div>
+            <div class="row" style="padding-top: 10px">
+                <div class="col-md-12" style="margin-bottom: 5px">
+                    <div class="col-md-1"><b>Upload</b></div>
+                    <div class="col-md-11">
+                        <h:inputFile id="file" value="#{postManagementBean.image}"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" style="margin-bottom: 5px">
+                    <div class="col-md-2 col-md-offset-10">
+                        <h:commandButton class="btn btn-primary" action="#{postManagementBean.submitPost()}" value="#{postManagementBean.action}"/>
+                    </div>
+                </div>
+            </div>
+        </h:form>
     </h:body>
 
 </html>
