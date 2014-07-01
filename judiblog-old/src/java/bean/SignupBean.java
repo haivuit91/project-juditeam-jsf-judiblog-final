@@ -9,7 +9,9 @@ package bean;
 import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import model.dao.RoleDAO;
 import model.dao.UserDAO;
+import model.dao.service.RoleDAOService;
 import model.dao.service.UserDAOService;
 import model.entities.Role;
 import model.entities.User;
@@ -25,6 +27,7 @@ public class SignupBean {
  public User user = new User();
     private Date birthday;
     UserDAOService USER_SERVICE = UserDAO.getInstance();
+    RoleDAOService ROLE_SERVICE = RoleDAO.getInstance();
 
     public SignupBean() {
 
@@ -48,8 +51,10 @@ public class SignupBean {
 
     public String createrUser() {
 
-        Role r = new Role(1, "ds", "ds", 1);
-        user.setRole(r);
+//        Role r = new Role(2, "ds", "ds", 1);
+//        user.setRole(r);
+        Role role = ROLE_SERVICE.getRoleByID(4);
+        user.setRole(role);
         if (USER_SERVICE.createUser(user)) {
             return "home";
         }
