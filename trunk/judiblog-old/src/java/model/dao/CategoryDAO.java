@@ -8,6 +8,11 @@ package model.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.dao.service.CategoryDAOService;
 import model.entities.Category;
 
@@ -98,9 +103,31 @@ public class CategoryDAO implements CategoryDAOService {
         String sql = "update tbl_category set isActive = ? where catID= ? ";
         Connection conn = ConnectionFactory.getConnection();
         PreparedStatement sm = conn.prepareStatement(sql);
-        sm.setBoolean(1,category.isActive());
+        sm.setBoolean(1, category.isActive());
         sm.setInt(2, category.getCatID());
         return sm.executeUpdate() == 1;
+    }
+
+    @Override
+    public List<Category> getList() {
+        try {
+            List<Category> list = new ArrayList<>();
+            String sql = "select * from tbl_category where isActive =1 ";
+            Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement sm = conn.prepareStatement(sql);
+            ResultSet rs = sm.executeQuery();
+            while (rs.next()) {
+                Category item = new Category();
+                item.setCatID(rs.getInt("catID"));
+                item.setCatName(rs.getString("catName"));
+                item.setActive(true);
+                list.add(item);
+            }
+            return list;
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
 }
