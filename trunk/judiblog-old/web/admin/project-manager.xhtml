@@ -30,38 +30,38 @@
                             <div class="table-responsive">
                                 <f:view>
                                     <h:form>
-                                        <h:dataTable value="#{projectBean.allProject}" var="userList" class="table table-striped table-bordered table-hover" id="dataTables">
+                                        <h:dataTable value="#{projectBean.allProject}" var="projectList" class="table table-striped table-bordered table-hover" id="dataTables">
                                             <h:column>
                                                 <f:facet name="header">Project ID</f:facet>
-                                                <h:outputText value="#{userList.projectID}" />
+                                                <h:outputText value="#{projectList.projectID}" />
                                             </h:column>
                                             <h:column>
                                                 <f:facet name="header">Project name</f:facet>
-                                                <a href=""><h:outputText value="#{userList.projectName}" /></a>
+                                                <a href=""><h:outputText value="#{projectList.projectName}" /></a>
                                             </h:column>
                                             <h:column>
                                                 <f:facet name="header">Start Date</f:facet>
-                                                <a href=""><h:outputText value="#{userList.startDate}" /></a>
+                                                <a href=""><h:outputText value="#{projectList.startDate}" /></a>
                                             </h:column>
                                             <h:column>
                                                 <f:facet name="header">Duration</f:facet>
-                                                <a href=""><h:outputText value="#{userList.duration}" /></a>
+                                                <a href=""><h:outputText value="#{projectList.duration}" /></a>
                                             </h:column>
                                             <h:column>
                                                 <f:facet name="header">Project Type</f:facet>
-                                                <a href=""><h:outputText value="#{userList.type.typeName}" /></a>
+                                                <a href=""><h:outputText value="#{projectList.type.typeName}" /></a>
                                             </h:column>
                                             <h:column>
                                                 <f:facet name="header">Description</f:facet>
-                                                <a href=""><h:outputText value="#{userList.description}" /></a>
+                                                <a href=""><h:outputText value="#{projectList.description}" /></a>
                                             </h:column>
                                             <h:column>
                                                 <f:facet name="header">Edit</f:facet>
-                                                <a href=""><h:outputText value="" /></a>
+                                                <a href=""><h:outputText value=""/><img src="/Judi-blog/img/edit.png" alt="edit"/></a>
                                             </h:column>
                                             <h:column>
                                                 <f:facet name="header">Delete</f:facet>
-                                                <a href=""><h:outputText value="" /></a>
+                                                <a href=""><h:outputText value="#{projectBean.deleteProject(projectList.projectID)}" /><img src="/Judi-blog/img/delete.png" alt="delete"/></a>
                                             </h:column>
                                         </h:dataTable>
                                     </h:form>
