@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:pt="http://code.google.com/ck-jsf-editor"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./common.xhtml">
+
+            <ui:define name="content">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Project Management</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-center">
+                                Add new project
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <f:view>
+                                        <h:form role="form">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label>Project Name:</label>
+                                                    <h:inputText value="#{projectBean.project.projectName}" class="form-control" id="projectName" pt:placeholder="Project Name">
+                                                    <f:validateLength minimum="5" maximum="100" />
+                                                    </h:inputText>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Start Date:</label>
+                                                    <h:inputText class="datetimepicker form-control" value="#{projectBean.project.startDate}" id="startDate" pt:placeholder="Start date">
+                                                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                                    </h:inputText>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Duration:</label>
+                                                    <h:inputText value="#{projectBean.project.duration}" class="form-control" id="duration" pt:placeholder="Duration">
+                                                    </h:inputText>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Project Type:</label>
+                                                    <h:selectOneMenu id="projectType" class="form-control" value="#{projectBean.projectType}"
+                                                                     converter="typeConverter" >
+                                                        <f:selectItems value="#{projectBean.types}" var="projectType"
+                                                                       itemValue="#{projectType}" itemLabel="#{projectType.typeName}" />
+                                                    </h:selectOneMenu>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Description:</label>
+                                                    <h:inputTextarea value="#{projectBean.project.description}" class="form-control" id="descriptiton" pt:placeholder="Description">
+                                                    </h:inputTextarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 text-center">
+                                                <h:commandButton class="btn btn-outline btn-primary" value="Update Project" action="#{projectBean.saveProject()}"/>
+                                                <button type="reset" class="btn btn-outline btn-primary">Reset</button>
+                                            </div>
+                                        </h:form>
+                                    </f:view>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
