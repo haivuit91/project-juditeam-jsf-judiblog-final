@@ -28,6 +28,11 @@
                                         <h:form role="form">
                                             <div class="col-lg-6">
                                                 <div class="form-group">
+                                                    <label>Project ID:</label>
+                                                    <h:inputText value="#{projectBean.project.projectID}" disabled="" class="form-control" id="projectID" pt:placeholder="Project ID">
+                                                    </h:inputText>
+                                                </div>
+                                                <div class="form-group">
                                                     <label>Project Name:</label>
                                                     <h:inputText value="#{projectBean.project.projectName}" class="form-control" id="projectName" pt:placeholder="Project Name">
                                                     <f:validateLength minimum="5" maximum="100" />
@@ -56,6 +61,11 @@
                                                     <label>Description:</label>
                                                     <h:inputTextarea value="#{projectBean.project.description}" class="form-control" id="descriptiton" pt:placeholder="Description">
                                                     </h:inputTextarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Active:</label>
+                                                    <h:inputText value="#{projectBean.project.active}" class="form-control" id="active" pt:placeholder="avtive">
+                                                    </h:inputText>
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 text-center">
