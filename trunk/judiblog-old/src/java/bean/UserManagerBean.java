@@ -5,10 +5,13 @@
  */
 package bean;
 
+import java.awt.BorderLayout;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -37,7 +40,6 @@ public class UserManagerBean implements Serializable {
     private final HttpSession session;
     private FacesMessage facesMessage;
     private final Map<String, String> params;
-    private String DeleteUser;
 
     UserDAOService USER_SERVICE = UserDAO.getInstance();
     RoleDAOService ROLE_SERVICE = RoleDAO.getInstance();
@@ -133,15 +135,18 @@ public class UserManagerBean implements Serializable {
     /**
      * @return the DeleteUser
      */
-    public String getDeleteUser() {
-        String msg = "";
-        int userID = getUser().getUserID();
-        User user = USER_SERVICE.getUserByID(userID);
-        if (USER_SERVICE.deleteUser(userID)) {
-            List<User> userList = USER_SERVICE.getAllUser();
-        } else {
-            msg += "Failed";
-        }
-        return DeleteUser;
-    }
+  public void detete(int userID) {
+        FacesMessage mess;
+        System.out.println(getUser().getUserID());
+//        try {
+//            if (USER_SERVICE.deleteUser(userID)) {
+//                mess = new FacesMessage("Success!");
+//            } else {
+//               mess = new FacesMessage("fail!");
+//            }
+//             FacesContext.getCurrentInstance().addMessage("result", mess);
+//        } catch (Exception ex) {
+//            Logger.getLogger(PostManagementBean.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+  }
 }
