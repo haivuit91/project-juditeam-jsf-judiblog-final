@@ -46,6 +46,11 @@ public class LoginBean {
         session.invalidate();
         return "login";
     }
+    
+    public String welcomeMessage(){
+        return "Hello: " + user.getUserName();
+    }
+    
     /**
      * @return the user
      */
