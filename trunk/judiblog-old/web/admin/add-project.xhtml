@@ -42,7 +42,6 @@
                                                 <div class="form-group">
                                                     <label>Duration:</label>
                                                     <h:inputText value="#{projectBean.project.duration}" class="form-control" id="duration" pt:placeholder="Duration">
-                                                    <f:validateLength minimum="10" />
                                                     </h:inputText>
                                                 </div>
                                                 <div class="form-group">
@@ -56,7 +55,6 @@
                                                 <div class="form-group">
                                                     <label>Description:</label>
                                                     <h:inputTextarea value="#{projectBean.project.description}" class="form-control" id="descriptiton" pt:placeholder="Description">
-                                                    <f:validateLongRange minimum="1" maximum="10000" />
                                                     </h:inputTextarea>
                                                 </div>
                                             </div>
