@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package bean;
 
 import java.util.Date;
@@ -34,6 +33,7 @@ import model.entities.User;
 public class ProjectBean {
 
     private final ProjectDAOService PROJECT_SERVICE = ProjectDAO.getInstance();
+    private final ProjectUserDAOService PROJECT_USER_SERVICE = ProjectUserDAO.getInstance();
     private final ProjectTypeDAOService TYPE_SERVICE = ProjectTypeDAO.getInstance();
     private final ProjectUserDAOService PU_SERVICE = ProjectUserDAO.getInstance();
     private final UserDAOService USER_SERVICE = UserDAO.getInstance();
@@ -49,7 +49,7 @@ public class ProjectBean {
     private List<ProjectType> types;
     private String typeName;
 
-    public void createProject() {
+    public String createProject() {
         String msg = "";
         String projectName = getProject().getProjectName();
         String description = getProject().getDescription();
@@ -68,19 +68,30 @@ public class ProjectBean {
                 Project pro = projectList.get(projectList.size() - 1);
                 ProjectUserDetails pud = new ProjectUserDetails(1, user, pro, 1);
                 if (PU_SERVICE.createPUD(pud)) {
-                    msg += "Project created by: "+user.getFullName();
-                }else{
-                    msg += "Create creater for project failed. \n";
+//                    msg += "Project created by: " + user.getFullName();
+                    return "project-manager";
+                } else {
+//                    msg += "Create creater for project failed. \n";
+                    return "add-project";
                 }
             }
-            msg += "Post project Successfully";
+//            msg += "Post project Successfully";
         } else {
-            msg += "Post project Failed";
+//            msg += "Post project Failed";
         }
         FacesMessage message = new FacesMessage(msg, "Message!");
 
         FacesContext.getCurrentInstance()
                 .addMessage(null, message);
+        return "/login";
+    }
+
+    public String deleteProject(int projectID) {
+        if (PROJECT_USER_SERVICE.deleteUserJoinedProject(projectID) && PROJECT_SERVICE.deleteProject(projectID)) {
+//            return "project-manager";
+            System.out.println("Thanh cong");
+        }
+        return null;
     }
 
     /**
@@ -138,5 +149,10 @@ public class ProjectBean {
      */
     public void setProject(Project project) {
         this.project = project;
+    }
+
+    public List<Project> getAllProject() {
+        List<Project> projectList = PROJECT_SERVICE.getProjects();
+        return projectList;
     }
 }
