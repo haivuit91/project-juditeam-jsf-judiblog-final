@@ -74,7 +74,7 @@ public interface ProjectDAOService {
      * @param project The type of project
      * @return true if active successfully
      */
-    public boolean activeProject(Project project);
+    public boolean activeProject(boolean isActive,int projectID);
     
     /**
      * Inactive project
