@@ -11,28 +11,28 @@
     </h:head>
 
     <h:body>
-            <h:form style="text-align: initial" >
-                <div class=" col-md-12 panel-heading label-success" style="margin-top: 10px">
-                    <b style="text-transform: initial;font-size: 1em;color:white">Hello &nbsp; </b><b style="font-size:.8em;text-transform: initial;color:white">#{sessionScope.currentUser.fullName}</b>
-                    &nbsp;&nbsp;
-                    <h:commandButton  action="#{loginBean.logout()}" class="btn btn-flickr btn-xs" style="" value="Logout"/>
-                </div> 
-                <div class="col-md-12 panel-body" style="background-color:#f8f8f8">
-                    <div class="col-md-12">
-                        <center>
-                            <h:graphicImage value="#{sessionScope.currentUser.pathImage}" class="img-thumbnail" width="200" height="171" />
-                        </center>
-                    </div>
-                    <div class="col-md-12 ">
-                        <a href="newpost.jsf" class="btn btn-primary " style="margin:10px">New Post</a>
-                        <a href="profile-user.jsf" class="btn btn-primary " style="margin:10px">Edit Profile </a>
-                        <a href="/Judi-blog/member/create-project.jsf" class="btn btn-primary " style="margin:7px">Create Project </a>
-                        <a href="manage-post-user.jsf" class="btn btn-primary "
-                           style="margin:7px">Manage Post </a>
+        <h:form style="text-align: initial" >
+            <div class=" col-md-12 panel-heading label-success" style="margin-top: 10px">
+                <b style="text-transform: initial;font-size: 1em;color:white">Hello &nbsp; </b><b style="font-size:1.1em;text-transform: initial;color:white">#{sessionScope.currentUser.fullName}</b>
+                &nbsp;&nbsp;
+                <h:commandButton  action="#{loginBean.logout()}" class="btn btn-flickr btn-xs navbar-right" style="" value="Logout"/>
+            </div> 
+            <div class="col-md-12 panel-body" style="background-color:#f8f8f8">
+                <div class="col-md-12">
+                    <center>
+                        <h:graphicImage value="#{sessionScope.currentUser.pathImage}" class="img-thumbnail" width="200" height="171" />
+                    </center>
+                </div>
+                <a href="newpost.jsf" class="list-group-item " style="margin:2px">
+                    <span class="glyphicon glyphicon-file"></span> Create Post</a>
+                <a href="profile-user.jsf" class="list-group-item " style="margin:2px">
+                    <span class="glyphicon glyphicon-edit"></span> Edit Profile </a>
+                <a href="create-project.jsf" class="list-group-item" style="margin:2px">
+                    <span class="glyphicon glyphicon-file"></span> Create Project </a>
+                <a href="manage-post-user.jsf" class="list-group-item" style="margin:2px">
+                    <span class="glyphicon glyphicon-tasks"></span> Manage Post </a>
 
-                    </div>
-
-                </div>   
-            </h:form>
+            </div>   
+        </h:form>
     </h:body>
 </html>
