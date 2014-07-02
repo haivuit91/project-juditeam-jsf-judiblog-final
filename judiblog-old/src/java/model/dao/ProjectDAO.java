@@ -49,7 +49,7 @@ public class ProjectDAO implements ProjectDAOService {
                 int typeID = rs.getInt("typeID");
                 ProjectType type = ProjectTypeDAO.getInstance().getTypeByID(typeID);
                 project.setType(type);
-                project.setActive(rs.getBoolean("isActive"));
+                project.setActive(rs.getInt("isActive"));
                 project.setUserList(ProjectUserDAO.getInstance().getUserByProject(rs.getInt("projectID")));
                 project.setUserListNotJoin(ProjectUserDAO.getInstance().getUserNotJoin(rs.getInt("projectID")));
                 projectList.add(project);
@@ -78,7 +78,7 @@ public class ProjectDAO implements ProjectDAOService {
                 int typeID = rs.getInt("typeID");
                 ProjectType type = ProjectTypeDAO.getInstance().getTypeByID(typeID);
                 project.setType(type);
-                project.setActive(rs.getBoolean("isActive"));
+                project.setActive(rs.getInt("isActive"));
                 project.setUserList(ProjectUserDAO.getInstance().getUserByProject(rs.getInt("projectID")));
                 project.setUserListNotJoin(ProjectUserDAO.getInstance().getUserNotJoin(rs.getInt("projectID")));
             }
@@ -107,7 +107,7 @@ public class ProjectDAO implements ProjectDAOService {
                 int typeID = rs.getInt("typeID");
                 ProjectType type = ProjectTypeDAO.getInstance().getTypeByID(typeID);
                 project.setType(type);
-                project.setActive(rs.getBoolean("isActive"));
+                project.setActive(rs.getInt("isActive"));
                 project.setUserList(ProjectUserDAO.getInstance().getUserByProject(rs.getInt("projectID")));
                 project.setUserListNotJoin(ProjectUserDAO.getInstance().getUserNotJoin(rs.getInt("projectID")));
                 projectList.add(project);
@@ -130,7 +130,7 @@ public class ProjectDAO implements ProjectDAOService {
             pstmt.setDate(3, (Date) project.getStartDate());
             pstmt.setInt(4, project.getDuration());
             pstmt.setInt(5, project.getType().getTypeID());
-            pstmt.setBoolean(6, project.getActive());
+            pstmt.setInt(6, project.getActive());
 
             pstmt.executeUpdate();
             isCheck = true;
@@ -155,7 +155,7 @@ public class ProjectDAO implements ProjectDAOService {
 //            pstmt.setDate(3, (Date) project.getStartDate());
             pstmt.setInt(4, project.getDuration());
             pstmt.setInt(5, project.getType().getTypeID());
-            pstmt.setBoolean(6, project.getActive());
+            pstmt.setInt(6, project.getActive());
             pstmt.setInt(7, project.getProjectID());
             pstmt.executeUpdate();
             isCheck = true;
@@ -231,7 +231,7 @@ public class ProjectDAO implements ProjectDAOService {
                 project.setDescription(rs.getString("description"));
                 project.setStartDate(rs.getDate("startDate"));
                 project.setDuration(rs.getInt("duration"));
-                project.setActive(rs.getBoolean("isActive"));
+                project.setActive(rs.getInt("isActive"));
                 project.setUserList(ProjectUserDAO.getInstance().getUserByProject(rs.getInt("projectID")));
                 projectList.add(project);
             }
@@ -256,7 +256,7 @@ public class ProjectDAO implements ProjectDAOService {
                 project.setDescription(rs.getString("description"));
                 project.setStartDate(rs.getDate("startDate"));
                 project.setDuration(rs.getInt("duration"));
-                project.setActive(rs.getBoolean("isActive"));
+                project.setActive(rs.getInt("isActive"));
                 project.setUserList(ProjectUserDAO.getInstance().getUserByProject(rs.getInt("projectID")));
                 projectList.add(project);
             }
