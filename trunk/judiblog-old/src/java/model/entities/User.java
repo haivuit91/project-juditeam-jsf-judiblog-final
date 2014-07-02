@@ -28,7 +28,7 @@ public class User {
     private Role role;
     private String idActive;
     private int active;
-    
+
     private List<Post> postList = null;
     private List<Project> projectList = null;
 
@@ -132,7 +132,6 @@ public class User {
         this.phone = phone;
     }
 
-    
     public String getPathImage() {
         return pathImage;
     }
@@ -180,6 +179,13 @@ public class User {
     public void setProjectList(List<Project> projectList) {
         this.projectList = projectList;
     }
-    
-    
+
+    @Override
+    public boolean equals(Object obj) {
+        User u = (User)obj;
+        if(u.getUserID() == this.userID && u.getUserName().equals(this.userName))
+            return true;
+        return false;
+    }
+
 }

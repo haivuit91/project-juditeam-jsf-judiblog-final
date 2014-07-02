@@ -31,6 +31,7 @@ import model.entities.User;
  *
  * @author windows 8.1
  */
+
 @ManagedBean
 @RequestScoped
 public class ProjectBean {
