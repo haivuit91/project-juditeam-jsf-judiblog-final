@@ -12,26 +12,26 @@ import java.util.List;
  * @author Admin
  */
 public class Category {
-
+    
     private int catID;
     private String catName;
     private boolean isActive;
     private List<Post> postList = null;
-
+    
     public Category() {
-
+        
     }
-
+    
     public Category(int catID, String catName, boolean isActive) {
         this.catID = catID;
         this.catName = catName;
         this.isActive = isActive;
     }
-
+    
     public List<Post> getPostList() {
         return postList;
     }
-
+    
     public void setPostList(List<Post> postList) {
         this.postList = postList;
     }
@@ -39,25 +39,37 @@ public class Category {
     public int getCatID() {
         return catID;
     }
-
+    
     public void setCatID(int catID) {
         this.catID = catID;
     }
-
+    
     public String getCatName() {
         return catName;
     }
-
+    
     public void setCatName(String catName) {
         this.catName = catName;
     }
-
+    
     public boolean isActive() {
         return isActive;
     }
-
+    
     public void setActive(boolean isActive) {
         this.isActive = isActive;
     }
-
+    
+    @Override
+    public boolean equals(Object obj) {
+     
+        Category cat = (Category) obj;
+       //    System.out.println("equals: id :" + cat.getCatID());
+      //     System.out.println("object: id :" + this.catID);
+        if (cat.getCatID() == this.catID && cat.getCatName().equals(this.catName)) {
+            return true;
+        }
+        return false;
+    }
+    
 }

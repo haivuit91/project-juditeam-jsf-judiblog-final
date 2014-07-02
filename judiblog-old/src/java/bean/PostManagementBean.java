@@ -32,7 +32,7 @@ import util.Support;
  */
 @ManagedBean
 @RequestScoped
-public class PostManagementBean {
+public final class PostManagementBean {
 
     /**
      * Creates a new instance of PostManagementBean
@@ -44,10 +44,14 @@ public class PostManagementBean {
     private Post post;
     private Part image;
     private String action = "Publish";
+    private String keySearch;
+    private List<Post> listPost;
 
     public PostManagementBean() {
+        System.out.println("create:");
         this.post = new Post();
         this.facesContext = FacesContext.getCurrentInstance();
+        listPost();
     }
 
     public String preEditPost(Post post) {
@@ -56,17 +60,26 @@ public class PostManagementBean {
         return "new-post";
     }
 
-    public String submitPost() {
-        boolean isSuccess = false;
-        try {
+    public void edit() {
+        System.out.println("edit");
+    }
 
-//            post.setUser(Support.getCurrentUser());
-//            System.out.println("usser:" + post.getUser());
-//            System.out.println("cat:" + post.getCategory());
-//            System.out.println("title:" + post.getTitle());
-//            System.out.println("img:" + post.getImagePath());
-//            System.out.println("id:" + post.getPostID());
-            if (action.equals("Save")) {
+    public void insert() {
+        System.out.println("insert");
+    }
+
+    public void search() {
+        try {
+            listPost = postService.searchPost("title", keySearch);
+        } catch (Exception ex) {
+            Logger.getLogger(PostManagementBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public String submitPost() {
+        try {
+            post.setPostDate(Support.getCurrentDate());
+            if (post.getPostID() != 0) {
                 System.out.println("save:");
                 if (post.getImagePath() == null) {
                     post.setImagePath(saveImage());
@@ -80,7 +93,7 @@ public class PostManagementBean {
 
             } else {
                 post.setImagePath(saveImage());
-                post.setPostDate(Support.getCurrentDate());
+
                 if (postService.insertPost(post)) {
                     return "post-manager";
                 } else {
@@ -167,16 +180,13 @@ public class PostManagementBean {
         }
     }
 
-    public List<Post> getListPost() {
+    private void listPost() {
         try {
-            List<Post> listPost = postService.getListPost();
-            return listPost;
-
+            listPost = postService.getListPost();
         } catch (Exception ex) {
             Logger.getLogger(PostManagementBean.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
     }
 
     public Post getPost() {
@@ -202,4 +212,21 @@ public class PostManagementBean {
     public void setAction(String action) {
         this.action = action;
     }
+
+    public String getKeySearch() {
+        return keySearch;
+    }
+
+    public void setKeySearch(String keySearch) {
+        this.keySearch = keySearch;
+    }
+
+    public List<Post> getListPost() {
+        return listPost;
+    }
+
+    public void setListPost(List<Post> listPost) {
+        this.listPost = listPost;
+    }
+
 }
