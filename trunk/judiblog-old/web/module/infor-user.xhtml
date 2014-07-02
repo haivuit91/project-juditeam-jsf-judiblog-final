@@ -12,7 +12,7 @@
 
     <h:body>
             <h:form style="text-align: initial" >
-                <div class=" panel-heading label-success" style="margin:10px">
+                <div class=" col-md-12 panel-heading label-success" style="margin-top: 10px">
                     <b style="text-transform: initial;font-size: 1em;color:white">Hello &nbsp; </b><b style="font-size:.8em;text-transform: initial;color:white">#{sessionScope.currentUser.fullName}</b>
                     &nbsp;&nbsp;
                     <h:commandButton  action="#{loginBean.logout()}" class="btn btn-flickr btn-xs" style="" value="Logout"/>
@@ -26,7 +26,9 @@
                     <div class="col-md-12 ">
                         <a href="newpost.jsf" class="btn btn-primary " style="margin:10px">New Post</a>
                         <a href="profile-user.jsf" class="btn btn-primary " style="margin:10px">Edit Profile </a>
-                        <a href="/Judi-blog/member/create-project.xhtml" class="btn btn-primary " style="margin:10px">Create Project </a>
+                        <a href="/Judi-blog/member/create-project.jsf" class="btn btn-primary " style="margin:7px">Create Project </a>
+                        <a href="manage-post-user.jsf" class="btn btn-primary "
+                           style="margin:7px">Manage Post </a>
 
                     </div>
 
