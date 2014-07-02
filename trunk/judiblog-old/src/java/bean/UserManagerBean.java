@@ -51,6 +51,11 @@ public class UserManagerBean implements Serializable {
         session = request.getSession(true);
         this.user = new User();
     }
+    
+    public String update1(User user1){
+        this.user = user1;
+        return "edit_user";
+    }
 
     public List<User> getAllUser() {
         List<User> userList = USER_SERVICE.getAllUser();
@@ -67,6 +72,7 @@ public class UserManagerBean implements Serializable {
      * @return the searchbyUsername
      */
     public String searchbyUser() {
+        String username = getUser().getUserName();
         return searchbyUser;
     }
 
@@ -98,39 +104,46 @@ public class UserManagerBean implements Serializable {
         return ROLE_SERVICE.getRoles();
 
     }
-public void edituser()
+
+    public String edituser() {
+//        String msg = "";
         
-{   String msg = "";
-    int userID = getUser().getUserID();
-    String username = getUser().getUserName();
+        int userID = getUser().getUserID();
+        String username = getUser().getUserName();
         String fullname = getUser().getFullName();
         String newpass = getUser().getPwd();
+        System.out.println(newpass);
         String address = getUser().getAddress();
         String email = getUser().getEmail();
         String phone = getUser().getPhone();
-      //  int role = getUser().getRole().getRoleID();
-//        Role roleID = ROLE_SERVICE.getRoleByID(role);
-//     Date birthday = getUser().getBirthday();
-//      java.sql.Date date = new java.sql.Date(birthday.getTime());
-      int gender = getUser().getGender();
+        int role = getUser().getRole().getRoleID();
+        Role roleID = ROLE_SERVICE.getRoleByID(role);
+        Date birthday = getUser().getBirthday();
+        java.sql.Date date = new java.sql.Date(birthday.getTime());
+        int gender = getUser().getGender();
         String idcard = getUser().getIdCard();
-        User  user = new User(userID, username, phone, fullname, null, gender, idcard, address, email, phone, null, null, null, 1);
-         if (USER_SERVICE.updateProfile(user))
-         {
-          msg += " Successfully";
-          
-        } else {
-            msg += " Failed";
-        }
-        FacesMessage message = new FacesMessage(msg, "Message!");
-
-        FacesContext.getCurrentInstance()
-                .addMessage(null, message);
+        
+        User user = new User(userID, username, newpass, fullname, date, gender, idcard, address, email, phone, null, roleID, null, 1);
+         if (USER_SERVICE.updateProfile(user)){
+//          msg += " Successfully";
+             System.out.println(username);
             
-}
-     
+             return "users_manager";
+            
+        } else {
+//            msg += " Failed";
+             return "edit_user";
+        }
+//        FacesMessage message = new FacesMessage(msg, "Message!");
+//
+//        FacesContext.getCurrentInstance()
+//                .addMessage(null, message);
+//       
+
+    }
+
     public void adduser() {
-      String msg = "";
+        String msg = "";
         String username = getUser().getUserName();
         String fullname = getUser().getFullName();
         String newpass = getUser().getPwd();
@@ -139,18 +152,15 @@ public void edituser()
         String phone = getUser().getPhone();
         int role = getUser().getRole().getRoleID();
         Role roleID = ROLE_SERVICE.getRoleByID(role);
-     Date birthday = getUser().getBirthday();
-      java.sql.Date date = new java.sql.Date(birthday.getTime());
-      int gender = getUser().getGender();
+        Date birthday = getUser().getBirthday();
+        java.sql.Date date = new java.sql.Date(birthday.getTime());
+        int gender = getUser().getGender();
         String idcard = getUser().getIdCard();
-        
-       
-        
+
         User user = new User(1, username, newpass, fullname, birthday, gender, idcard, address, email, phone, null, roleID, null, 1);
-        if (USER_SERVICE.createUser(user))
-         {
-          msg += " Successfully";
-          
+        if (USER_SERVICE.createUser(user)) {
+            msg += " Successfully";
+
         } else {
             msg += " Failed";
         }
@@ -158,25 +168,23 @@ public void edituser()
 
         FacesContext.getCurrentInstance()
                 .addMessage(null, message);
-            
-        
-     
+
     }
 
     /**
      * @return the DeleteUser
      */
-  public void detete(int userID) {
-        FacesMessage mess;  
+    public void detete(int userID) {
+        FacesMessage mess;
         try {
             if (USER_SERVICE.deleteUser(userID)) {
                 mess = new FacesMessage("Success!");
             } else {
-               mess = new FacesMessage("fail!");
+                mess = new FacesMessage("fail!");
             }
-             FacesContext.getCurrentInstance().addMessage("result", mess);
+            FacesContext.getCurrentInstance().addMessage("result", mess);
         } catch (Exception ex) {
             Logger.getLogger(PostManagementBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-  }
+    }
 }
