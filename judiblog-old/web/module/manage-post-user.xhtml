@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+
+        <div class="row">
+                    <div class="col-md-12">
+                        <div class="page-header"><h1>Post Management</h1></div>
+                    </div>
+                </div>
+                <div class="row"><h:messages/></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <f:view>
+                            <h:form>
+                                <h:dataTable value="a" var="item" headerClass="text-center"  styleClass="table table-hover table-bordered">
+                                    <h:column>
+                                        <f:facet name="header" >
+                                            <h:outputText value="Title"></h:outputText>
+                                        </f:facet>
+                                        <h:commandLink value="a" action="a">
+                                        
+                                        </h:commandLink>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Date"/>
+                                        </f:facet>
+                                        <h:outputText value=""/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Category"/>
+                                        </f:facet>
+                                        <h:outputText value=""/>
+                                    </h:column>
+                                        <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Action"/>
+                                        </f:facet>
+                                        <h:commandLink action="a" value="Delete"/>
+                                        <h:commandLink action="a" value="a" 
+                                                       style="padding-left: 10px"/>
+                                    </h:column>
+                                </h:dataTable>
+                            </h:form>
+
+                        </f:view>
+                    </div>
+                </div>
+        
+        
+        
+        
+        
+    </h:body>
+
+</html>
