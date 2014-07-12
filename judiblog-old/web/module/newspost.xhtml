@@ -10,56 +10,55 @@
         <title>Facelets Template</title>
     </h:head>
     <h:body>
-    <div class="col-md-12" style="margin:10px">
-        <div class="col-md-12 panel-body" style="background-color:#f8f8f8">
-            <h:form>
-                <div class="col-md-12" style="margin-bottom: 5px">
-                    <div class="col-md-2"><b>Title</b></div>
-                    <div class="col-md-10"><h:inputText class="form-control" value=""></h:inputText></div>
-                </div>
-                <div class="col-md-12" style="margin-bottom: 5px">
-                    <div class="col-md-2"><b>Category</b></div>
-                    <div class="col-md-4">
-                        <h:selectOneMenu value="a" class="form-control">
-                            <f:selectItem id="item1" itemLabel="News" itemValue="1" />
-                            <f:selectItem id="item2" itemLabel="Sports" itemValue="2" />
-                            <f:selectItem id="item3" itemLabel="Music" itemValue="3" />
-                            <f:selectItem id="item4" itemLabel="Java" itemValue="4" />
-                            <f:selectItem id="item5" itemLabel="Web" itemValue="5" />
-                        </h:selectOneMenu>
+        <div class="col-md-12" style="margin:10px">
+            <div class="col-md-12 panel-body" style="background-color:#f8f8f8">
+                <h:form enctype="multipart/form-data">
+                    <div class="col-md-12" style="margin-bottom: 5px">
+                        <div class="col-md-2"><b>Title</b></div>
+                        <div class="col-md-10"><h:inputText class="form-control" value="#{postBean.post.title}"></h:inputText></div>
                     </div>
-                    <div class="col-md-2"><b>Companent</b></div>
-                    <div class="col-md-4">
-                        <h:selectOneMenu value="b" class="form-control">
-                            <f:selectItem id="item6" itemLabel="News" itemValue="1" />
-                            <f:selectItem id="item7" itemLabel="Sports" itemValue="2" />
-                            <f:selectItem id="item8" itemLabel="Music" itemValue="3" />
-                            <f:selectItem id="item9" itemLabel="Java" itemValue="4" />
-                            <f:selectItem id="item10" itemLabel="Web" itemValue="5" />
-                        </h:selectOneMenu>
-                    </div>
-                </div>
-                <div class="col-md-12" style="margin-bottom: 5px">
-                    <ck:editor uiColor="aed0ea" value="" height="400px"/>
-        </div>
+                    <div class="col-md-12" style="margin-bottom: 5px">
+                        <div class="col-md-2"><b>Category</b></div>
+                        <div class="col-md-4">
+                            <h:selectOneMenu value="#{postBean.post.category}" class="form-control">
+                                <f:converter converterId="CategoryConverter" />
+                                <f:selectItems value="#{postBean.getList()}" var="category" itemValue="#{category}" itemLabel="#{category.catName}"/>
 
-        <div class="col-md-12" style="margin-bottom: 5px">
-            <div class="col-md-1"><b>Upload</b></div>
-            <div class="col-md-11">
-                <h:inputFile id="file" value=""/>
+                            </h:selectOneMenu>
+                        </div>
+                        <div class="col-md-2"><b>Companent</b></div>
+                        <div class="col-md-4">
+                            <h:selectOneMenu value="b" class="form-control">
+                                <f:selectItem id="item6" itemLabel="News" itemValue="1" />
+                                <f:selectItem id="item7" itemLabel="Sports" itemValue="2" />
+                                <f:selectItem id="item8" itemLabel="Music" itemValue="3" />
+                                <f:selectItem id="item9" itemLabel="Java" itemValue="4" />
+                                <f:selectItem id="item10" itemLabel="Web" itemValue="5" />
+                            </h:selectOneMenu>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-bottom: 5px">
+                        <ck:editor uiColor="aed0ea" value="#{postBean.post.content}" height="400px"/>
+                    </div>
+
+                    <div class="col-md-12" style="margin-bottom: 5px">
+                        <div class="col-md-1"><b>Upload</b></div>
+                        <div class="col-md-11">
+                            <h:inputFile id="file" value="#{postBean.image}"/>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-bottom: 5px">
+                        <div class="col-md-2 col-md-offset-10">
+                            <h:commandButton value="Public" id="#{postBean.post.postID != null ? 'Save' : 'Publish'}" actionListener="#{postBean.insertPost()}" class="btn btn-primary"/>
+
+                        </div>
+                    </div>
+
+                </h:form>
             </div>
         </div>
-        <div class="col-md-12" style="margin-bottom: 5px">
-            <div class="col-md-2 col-md-offset-10">
-                <h:commandButton value="Public" class="btn btn-primary"></h:commandButton>
-            </div>
-        </div>
-
-        </h:form>
-    </div>
-</div>
 
 
-</h:body>
+    </h:body>
 
 </html>
