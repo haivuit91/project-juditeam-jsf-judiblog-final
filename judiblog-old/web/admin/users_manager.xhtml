@@ -22,12 +22,15 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading text-center">
-                                <h:form>
-                                    <h:inputText value="#{userManager.search()}"/>
-                                    <h:commandButton action="#{userManager.search}" value="Search"/>
-                                </h:form>
-                                List users
+                            <div class="row col-md-5" style="margin-bottom: 10px">
+                                <div class="input-group custom-search-form">
+                                    <h:inputText id="key-search" value="#{userManager.searchbyUser}" class="form-control"/>
+                                    <span class="input-group-btn">
+                                        <h:commandButton class="btn btn-default" action="#{userManager.search()}" value="Search">
+                                            <!--<f:ajax execute="key-search" render="result2"/>-->
+                                        </h:commandButton>
+                                    </span>
+                                </div>
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
@@ -79,7 +82,7 @@
                                                 </h:column>
                                                 <h:column>
                                                     <f:facet name="header">  Edit-Delete </f:facet>
-                                                   
+
                                                     <h:commandButton value="Delete" 
                                                                      action="#{userManager.detete(userList.userID)}"  />                
                                                 </h:column>
