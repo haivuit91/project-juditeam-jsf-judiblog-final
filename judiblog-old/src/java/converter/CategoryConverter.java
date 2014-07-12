@@ -3,45 +3,55 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package converter;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import model.dao.CategoryDAO;
+import model.dao.PostDAO;
 import model.dao.service.CategoryDAOService;
+import model.dao.service.PostDAOService;
 import model.entities.Category;
 
 /**
  *
- * @author Tuanka
+ * @author Thanh
  */
-@FacesConverter("converter.CategoryConverter")
-public class CategoryConverter implements Converter {
-
-    private final CategoryDAOService categoryService = CategoryDAO.getInstance();
+@ManagedBean
+@RequestScoped
+@FacesConverter("CategoryConverter")
+public class CategoryConverter implements Converter{
+     private final CategoryDAOService  CATEGORY_SERVICE= CategoryDAO.getInstance();
+    /**
+     * Creates a new instance of CategoryConverter
+     */
+    public CategoryConverter() {
+    }
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        try {
-        //    Category c = categoryService.getCategoryByID(Integer.valueOf(value));
-       //      System.out.println(" get object id:" + c.getCatID());
-          //  return categoryService.getCategoryByID(Integer.valueOf(value));
-            return categoryService.getCategoryByID(Integer.valueOf(value));
-        } catch (Exception ex) {
-            Logger.getLogger(CategoryConverter.class.getName()).log(Level.SEVERE, null, ex);
+        Category category = null;
+        if (value != null) {
+            try {
+                category = CATEGORY_SERVICE.getCategoryByID(Integer.valueOf(value));
+            } catch (Exception ex) {
+                Logger.getLogger(CategoryConverter.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        return null;
+        return category;
     }
 
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
-     //   Category c = ((Category) value);
-     //   System.out.println(" get string id:" + c.getCatID());
-        return ((Category) value).getCatID()+ "";
+        Category category = (Category) value;
+        return category.getCatID() + "";
     }
-
+    
 }
