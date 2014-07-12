@@ -183,13 +183,13 @@ public class ProjectDAO implements ProjectDAOService {
     }
 
     @Override
-    public boolean activeProject(boolean isActive,int projectID) {
+    public boolean activeProject(int isActive,int projectID) {
         boolean isCheck = false;
         try {
             Connection conn = ConnectionFactory.getConnection();
             String sql = "update tbl_project set isActive = ?    where projectID = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setBoolean(1, isActive);
+            pstmt.setInt(1, isActive);
             pstmt.setInt(2, projectID);
             pstmt.executeUpdate();
             isCheck = true;
