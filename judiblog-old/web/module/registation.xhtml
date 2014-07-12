@@ -130,7 +130,7 @@
                             <div class="col-md-2" style="font-weight: bold">Birthday</div>
                             <div class="col-md-6">
                                 <h:inputText class="datetimepicker  form-control" value="#{signupBean.user.birthday}" id="birthday" p:placeholder="Birthday">
-                                    <f:convertDateTime pattern="yyyy/MM/dd" />
+                                    <f:convertDateTime pattern="dd/MM/yyyy" />
                                 </h:inputText>
                             </div>
                         </div>
@@ -140,7 +140,7 @@
 
                         <div class="col-md-12" style="margin-bottom: 5px">
                             <h:commandButton value="Registy"  action="#{signupBean.createrUser()}" class=" col-md-2 col-md-offset-2 btn btn-primary"/> 
-                            <h:commandButton value="Reset"  class=" col-md-2 col-md-offset-2 btn btn-danger"/> 
+                            <h:commandButton value="Reset" type="reset" class=" col-md-2 col-md-offset-2 btn btn-danger"/> 
                         </div>
                     </h:form>
                 </f:view>
