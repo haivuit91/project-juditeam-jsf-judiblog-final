@@ -54,7 +54,7 @@ public class ProjectBean {
     private ProjectType projectType;
     private List<ProjectType> types;
     private String typeName;
-    private String projectName;
+//    private String projectName;
 
     public String createProject() {
         String msg = "";
@@ -93,12 +93,23 @@ public class ProjectBean {
         return "/login";
     }
 
-    public String deleteProject(int projectID) {
-        if (PROJECT_USER_SERVICE.deleteUserJoinedProject(projectID) && PROJECT_SERVICE.deleteProject(projectID)) {
-//            return "project-manager";
-            System.out.println("Thanh cong");
+    public void deleteProject(int projectID) {
+//        if (PROJECT_USER_SERVICE.deleteUserJoinedProject(projectID) && PROJECT_SERVICE.deleteProject(projectID)) {
+////            return "project-manager";
+//            System.out.println("Thanh cong");
+//        }
+//        return null;
+        FacesMessage mess;
+        try {
+            if (PROJECT_SERVICE.deleteProject(projectID)){
+                mess = new FacesMessage("Success!");
+            } else {
+                mess = new FacesMessage("fail!");
+            }
+            FacesContext.getCurrentInstance().addMessage("result", mess);
+        } catch (Exception ex) {
+            Logger.getLogger(PostManagementBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
     }
 
     public String updateProject(Project project1) {
@@ -133,7 +144,7 @@ public class ProjectBean {
         return projList;
     }
     
-    public void activeProject(int postID, boolean isActive){
+    public void activeProject(int postID, int isActive){
             if (PROJECT_SERVICE.activeProject(isActive, postID)) {
                 
             }
