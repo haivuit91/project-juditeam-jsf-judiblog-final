@@ -21,7 +21,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading text-center">
                                 <h:form>
-                                    <h:inputText value="#{projectBean.value}"/>&nbsp; &nbsp; 
+                                    <h:inputText value="#{projectBean.key}"/>&nbsp; &nbsp; 
                                     <h:commandButton action="#{projectBean.findProject()}" value="Search" class="btn btn-outline btn-primary"/>
                                 </h:form>
                                 List Project
@@ -58,7 +58,7 @@
                                             </h:column>
                                             <h:column>
                                                 <f:facet name="header">Active</f:facet>
-                                                <h:commandLink action="#{projectBean.activeProject(projectList.projectID, !projectList.active)}"  value="#{projectList.active ? 'Disable':'Enable'}"  style="padding-left: 10px"/>
+                                                <h:commandLink value="#{projectList.active}"  style="padding-left: 10px"/>
                                             </h:column>
                                             <h:column>
                                                 <f:facet name="header">Delete</f:facet>
