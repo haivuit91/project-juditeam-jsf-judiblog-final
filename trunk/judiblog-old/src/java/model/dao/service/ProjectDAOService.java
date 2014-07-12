@@ -71,10 +71,12 @@ public interface ProjectDAOService {
     
     /**
      * Active project
+     * @param isActive
+     * @param projectID
      * @param project The type of project
      * @return true if active successfully
      */
-    public boolean activeProject(boolean isActive,int projectID);
+    public boolean activeProject(int isActive,int projectID);
     
     /**
      * Inactive project
