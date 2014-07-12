@@ -103,7 +103,10 @@ public class Post {
 
    
 
-   
+    @Override
+        public boolean equals(Object obj) {
+        return true; //To change body of generated methods, choose Tools | Templates.
+    }
 
    
 
