@@ -32,7 +32,10 @@
                                         <h:form role="form">
                                           
                                             <div class="col-lg-6">
-                                               
+                                                 <div class="form-group">
+                                                        <label>User ID:</label>
+                                                        <h:inputText class="form-control" value="#{userManager.user.userID}" id="userID" pt:placeholder="Enter user name"/>
+                                                    </div>
                                                              <div class="form-group">
                                                         <label>User Name:</label>
                                                         <h:inputText class="form-control" value="#{userManager.user.userName}" id="username" pt:placeholder="Enter user name"/>

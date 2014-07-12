@@ -53,7 +53,7 @@ public class UserManagerBean implements Serializable {
     }
     
     public String update1(User user1){
-        this.user = user1;
+        this.user = user1;      
         return "edit_user";
     }
 
@@ -62,26 +62,18 @@ public class UserManagerBean implements Serializable {
         return userList;
     }
 
-    public List<User> search() {
-
-        List<User> userList = USER_SERVICE.findUserByUserName(searchbyUser);
-        return userList;
+    public String search() {
+           System.out.print(user.getUserName());
+            List<User> userList   = USER_SERVICE.findUsers("username", searchbyUser);
+                return "users_manager";
+        
+        
     }
 
     /**
      * @return the searchbyUsername
      */
-    public String searchbyUser() {
-        String username = getUser().getUserName();
-        return searchbyUser;
-    }
 
-    /**
-     * @param searchbyUsername the searchbyUsername to set
-     */
-    public void searchbyUser(String searchbyUser) {
-        this.searchbyUser = searchbyUser;
-    }
 
     /**
      * @return the user
@@ -106,13 +98,12 @@ public class UserManagerBean implements Serializable {
     }
 
     public String edituser() {
-//        String msg = "";
-        
+
         int userID = getUser().getUserID();
         String username = getUser().getUserName();
         String fullname = getUser().getFullName();
         String newpass = getUser().getPwd();
-        System.out.println(newpass);
+      
         String address = getUser().getAddress();
         String email = getUser().getEmail();
         String phone = getUser().getPhone();
@@ -122,11 +113,18 @@ public class UserManagerBean implements Serializable {
         java.sql.Date date = new java.sql.Date(birthday.getTime());
         int gender = getUser().getGender();
         String idcard = getUser().getIdCard();
-        
         User user = new User(userID, username, newpass, fullname, date, gender, idcard, address, email, phone, null, roleID, null, 1);
          if (USER_SERVICE.updateProfile(user)){
-//          msg += " Successfully";
+
+             System.out.println(userID);
              System.out.println(username);
+             System.out.println(fullname);
+             System.out.println(newpass);
+             System.out.println(address);
+             System.out.println(email);
+             System.out.println(phone);
+             System.out.println(roleID);
+             System.out.println(date);
             
              return "users_manager";
             
@@ -184,7 +182,21 @@ public class UserManagerBean implements Serializable {
             }
             FacesContext.getCurrentInstance().addMessage("result", mess);
         } catch (Exception ex) {
-            Logger.getLogger(PostManagementBean.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserManagerBean.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    /**
+     * @return the searchbyUser
+     */
+    public String getSearchbyUser() {
+        return searchbyUser;
+    }
+
+    /**
+     * @param searchbyUser the searchbyUser to set
+     */
+    public void setSearchbyUser(String searchbyUser) {
+        this.searchbyUser = searchbyUser;
     }
 }
