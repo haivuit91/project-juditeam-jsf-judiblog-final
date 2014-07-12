@@ -13,7 +13,7 @@
 
         <div class="row">
                     <div class="col-md-12">
-                        <div class="page-header"><h1>Post Management</h1></div>
+                        <div class="page-header"><h1> Management User</h1></div>
                     </div>
                 </div>
                 <div class="row"><h:messages/></div>
@@ -21,34 +21,32 @@
                     <div class="col-md-12">
                         <f:view>
                             <h:form>
-                                <h:dataTable value="a" var="item" headerClass="text-center"  styleClass="table table-hover table-bordered">
+                                <h:dataTable value="#{postBean.listPost}" var="item" headerClass="text-center"  styleClass="table table-hover table-bordered">
                                     <h:column>
                                         <f:facet name="header" >
                                             <h:outputText value="Title"></h:outputText>
                                         </f:facet>
-                                        <h:commandLink value="a" action="a">
-                                        
-                                        </h:commandLink>
+                                        <h:outputText value="#{item.title}"></h:outputText>
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">
                                             <h:outputText value="Date"/>
                                         </f:facet>
-                                        <h:outputText value=""/>
+                                        <h:outputText value="#{item.postDate}"/>
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">
                                             <h:outputText value="Category"/>
                                         </f:facet>
-                                        <h:outputText value=""/>
+                                        <h:outputText value="#{item.category.catName}"/>
                                     </h:column>
                                         <h:column>
                                         <f:facet name="header">
                                             <h:outputText value="Action"/>
                                         </f:facet>
-                                        <h:commandLink action="a" value="Delete"/>
-                                        <h:commandLink action="a" value="a" 
-                                                       style="padding-left: 10px"/>
+                                            <h:commandLink action="#{postBean.detete(item.postID)}" value="Delete"  style="padding-left: 20px" />
+                                            <h:commandLink action="#{postBean.editPost(item)}" value="Edit" style="padding-left: 20px" />
+                                                                              
                                     </h:column>
                                 </h:dataTable>
                             </h:form>
