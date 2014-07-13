@@ -51,9 +51,9 @@ public class UserManagerBean implements Serializable {
         session = request.getSession(true);
         this.user = new User();
     }
-    
-    public String update1(User user1){
-        this.user = user1;      
+
+    public String update1(User user1) {
+        this.user = user1;
         return "edit_user";
     }
 
@@ -62,19 +62,13 @@ public class UserManagerBean implements Serializable {
         return userList;
     }
 
-    public String search() {
-           System.out.print(user.getUserName());
-            List<User> userList   = USER_SERVICE.findUsers("username", searchbyUser);
-                return "users_manager";
-        
-        
+    public void search() {
+        List<User> userList = USER_SERVICE.findUsers("keyword", searchbyUser);
     }
 
     /**
      * @return the searchbyUsername
      */
-
-
     /**
      * @return the user
      */
@@ -103,7 +97,7 @@ public class UserManagerBean implements Serializable {
         String username = getUser().getUserName();
         String fullname = getUser().getFullName();
         String newpass = getUser().getPwd();
-      
+
         String address = getUser().getAddress();
         String email = getUser().getEmail();
         String phone = getUser().getPhone();
@@ -114,23 +108,23 @@ public class UserManagerBean implements Serializable {
         int gender = getUser().getGender();
         String idcard = getUser().getIdCard();
         User user = new User(userID, username, newpass, fullname, date, gender, idcard, address, email, phone, null, roleID, null, 1);
-         if (USER_SERVICE.updateProfile(user)){
+        if (USER_SERVICE.updateProfile(user)) {
 
-             System.out.println(userID);
-             System.out.println(username);
-             System.out.println(fullname);
-             System.out.println(newpass);
-             System.out.println(address);
-             System.out.println(email);
-             System.out.println(phone);
-             System.out.println(roleID);
-             System.out.println(date);
-            
-             return "users_manager";
-            
+            System.out.println(userID);
+            System.out.println(username);
+            System.out.println(fullname);
+            System.out.println(newpass);
+            System.out.println(address);
+            System.out.println(email);
+            System.out.println(phone);
+            System.out.println(roleID);
+            System.out.println(date);
+
+            return "users_manager";
+
         } else {
 //            msg += " Failed";
-             return "edit_user";
+            return "edit_user";
         }
 //        FacesMessage message = new FacesMessage(msg, "Message!");
 //

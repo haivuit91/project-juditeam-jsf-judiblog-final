@@ -22,75 +22,79 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
+                            
+                                    <f:view>
+                                        <h:form>
                             <div class="row col-md-5" style="margin-bottom: 10px">
                                 <div class="input-group custom-search-form">
-                                    <h:inputText id="key-search" value="#{userManager.searchbyUser}" class="form-control"/>
-                                    <span class="input-group-btn">
-                                        <h:commandButton class="btn btn-default" action="#{userManager.search()}" value="Search">
-                                            <!--<f:ajax execute="key-search" render="result2"/>-->
-                                        </h:commandButton>
-                                    </span>
+                                        <h:inputText id="key-search" value="#{userManager.searchbyUser}" class="form-control"/>
+                                        <span class="input-group-btn">
+                                            <h:commandButton class="btn btn-default" action="#{userManager.search()}" value="Search">
+                                            <f:ajax execute="key-search" render="result2"/>
+                                            </h:commandButton>
+                                        </span>
                                 </div>
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
-                                    <f:view>
-                                        <h:form>
-                                            <h:dataTable value="#{userManager.allUser}" var="userList" class="table table-striped table-bordered table-hover" id="dataTables">
-                                                <h:column>
-                                                    <f:facet name="header">User ID</f:facet>
-                                                    <h:commandLink value="#{userList.userID}" action="#{userManager.update1(userList)}" />
-                                                </h:column>   
+                                            <h:panelGroup id="result2">
+                                                <h:dataTable value="#{userManager.allUser}" var="userList" class="table table-striped table-bordered table-hover" id="dataTables">
+                                                    <h:column>
+                                                        <f:facet name="header">User ID</f:facet>
+                                                        <h:commandLink value="#{userList.userID}" action="#{userManager.update1(userList)}" />
+                                                    </h:column>   
 
-                                                <h:column>
-                                                    <f:facet name="header">User name</f:facet>
-                                                    <a href="#{userList.userID}"><h:outputText value="#{userList.userName}" /></a>
-                                                </h:column>
-                                                <h:column>
-                                                    <f:facet name="header">Full name</f:facet>
-                                                    <h:outputText value="#{userList.fullName}" />
-                                                </h:column>
-                                                <h:column>
-                                                    <f:facet name="header">Birthday</f:facet>
-                                                    <h:outputText value="#{userList.birthday}">
-                                                        <f:convertDateTime pattern="dd/MM/yyyy" />
-                                                    </h:outputText>
-                                                </h:column>
-                                                <h:column>
-                                                    <f:facet name="header">Gender</f:facet>
-                                                    <h:outputText value="#{userList.gender > 0 ? 'Female' : 'Male'}" />
-                                                </h:column>
-                                                <h:column>
-                                                    <f:facet name="header">ID Card</f:facet>
-                                                    <h:outputText value="#{userList.idCard}" />
-                                                </h:column>
-                                                <h:column>
-                                                    <f:facet name="header">Address</f:facet>
-                                                    <h:outputText value="#{userList.address}" />
-                                                </h:column>
-                                                <h:column>
-                                                    <f:facet name="header">Email</f:facet>
-                                                    <h:outputText value="#{userList.email}" />
-                                                </h:column>
-                                                <h:column>
-                                                    <f:facet name="header">Phone</f:facet>
-                                                    <h:outputText value="#{userList.phone}" />
-                                                </h:column>
-                                                <h:column>
-                                                    <f:facet name="header">Status</f:facet>
-                                                    <h:outputText value="#{userList.active}" />
-                                                </h:column>
-                                                <h:column>
-                                                    <f:facet name="header">  Edit-Delete </f:facet>
+                                                    <h:column>
+                                                        <f:facet name="header">User name</f:facet>
+                                                        <a href="#{userList.userID}"><h:outputText value="#{userList.userName}" /></a>
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header">Full name</f:facet>
+                                                        <h:outputText value="#{userList.fullName}" />
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header">Birthday</f:facet>
+                                                        <h:outputText value="#{userList.birthday}">
+                                                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                                                        </h:outputText>
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header">Gender</f:facet>
+                                                        <h:outputText value="#{userList.gender > 0 ? 'Female' : 'Male'}" />
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header">ID Card</f:facet>
+                                                        <h:outputText value="#{userList.idCard}" />
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header">Address</f:facet>
+                                                        <h:outputText value="#{userList.address}" />
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header">Email</f:facet>
+                                                        <h:outputText value="#{userList.email}" />
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header">Phone</f:facet>
+                                                        <h:outputText value="#{userList.phone}" />
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header">Status</f:facet>
+                                                        <h:outputText value="#{userList.active}" />
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header">  Edit-Delete </f:facet>
 
-                                                    <h:commandButton value="Delete" 
-                                                                     action="#{userManager.detete(userList.userID)}"  />                
-                                                </h:column>
-                                            </h:dataTable>
-                                        </h:form>
-                                    </f:view>
+                                                        <h:commandButton value="Delete" 
+                                                                         action="#{userManager.detete(userList.userID)}"  />                
+                                                    </h:column>
+                                                </h:dataTable>
+                                            </h:panelGroup>
+                                       
                                 </div>
                             </div>
+                                  </h:form>
+                                    </f:view>           
                         </div>
                     </div>
                 </div>
