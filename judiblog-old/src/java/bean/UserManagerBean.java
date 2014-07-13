@@ -59,11 +59,13 @@ public class UserManagerBean implements Serializable {
 
     public List<User> getAllUser() {
         List<User> userList = USER_SERVICE.getAllUser();
+        
         return userList;
     }
 
-    public void search() {
-        List<User> userList = USER_SERVICE.findUsers("keyword", searchbyUser);
+    public List<User> search() {
+         List<User> userList = USER_SERVICE.findUserByUserName(searchbyUser);;
+      return  userList;
     }
 
     /**

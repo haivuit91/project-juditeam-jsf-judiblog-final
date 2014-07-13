@@ -38,7 +38,7 @@
                             <div class="panel-body">
                                 <div class="table-responsive">
                                             <h:panelGroup id="result2">
-                                                <h:dataTable value="#{userManager.allUser}" var="userList" class="table table-striped table-bordered table-hover" id="dataTables">
+                                                <h:dataTable value="#{userManager.search()}" var="userList" class="table table-striped table-bordered table-hover" id="dataTables">
                                                     <h:column>
                                                         <f:facet name="header">User ID</f:facet>
                                                         <h:commandLink value="#{userList.userID}" action="#{userManager.update1(userList)}" />
