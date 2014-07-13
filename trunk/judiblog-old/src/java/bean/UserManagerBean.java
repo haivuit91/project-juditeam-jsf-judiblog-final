@@ -136,7 +136,7 @@ public class UserManagerBean implements Serializable {
 
     }
 
-    public void adduser() {
+    public String adduser() {
         String msg = "";
         String username = getUser().getUserName();
         String fullname = getUser().getFullName();
@@ -153,15 +153,12 @@ public class UserManagerBean implements Serializable {
 
         User user = new User(1, username, newpass, fullname, birthday, gender, idcard, address, email, phone, null, roleID, null, 1);
         if (USER_SERVICE.createUser(user)) {
-            msg += " Successfully";
+            return "users_manager";
 
         } else {
-            msg += " Failed";
+//            msg += " Failed";
+            return "add_edit_user";
         }
-        FacesMessage message = new FacesMessage(msg, "Message!");
-
-        FacesContext.getCurrentInstance()
-                .addMessage(null, message);
 
     }
 
