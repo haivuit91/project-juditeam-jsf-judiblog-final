@@ -15,17 +15,14 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import model.dao.CategoryDAO;
-import model.dao.PostDAO;
 import model.dao.service.CategoryDAOService;
-import model.dao.service.PostDAOService;
 import model.entities.Category;
 
 /**
  *
  * @author Thanh
  */
-@ManagedBean
-@RequestScoped
+
 @FacesConverter("CategoryConverter")
 public class CategoryConverter implements Converter{
      private final CategoryDAOService  CATEGORY_SERVICE= CategoryDAO.getInstance();
