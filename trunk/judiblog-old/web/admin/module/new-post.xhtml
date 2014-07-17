@@ -24,7 +24,7 @@
                     <div class="col-md-2"><b>Category</b></div>
                     <div class="col-md-4">
                         <h:selectOneMenu value="#{postManagementBean.post.category}"  class="form-control">
-                            <f:converter converterId="converter.CategoryConverter"/>
+                            <f:converter converterId="CategoryConverter"/>
                             <f:selectItems value="#{postManagementBean.getListCategory()}" var="item" itemValue="#{item}" itemLabel="#{item.catName}"/>
                         </h:selectOneMenu>
                     </div>
@@ -53,7 +53,8 @@
             <div class="row">
                 <div class="col-md-12" style="margin-bottom: 5px">
                     <div class="col-md-2 col-md-offset-10">
-                        <h:commandButton class="btn btn-primary" action="#{postManagementBean.submitPost()}" value="#{postManagementBean.action}"/>
+                        <h:commandButton class="btn btn-primary" action="#{postManagementBean.submitPost()}" value="#{postManagementBean.post.postID == 0 ? 'Publish':'Save' }">
+                        </h:commandButton>
                     </div>
                 </div>
             </div>
