@@ -72,6 +72,12 @@ public class Role {
 
     @Override
         public boolean equals(Object obj) {
-        return true; //To change body of generated methods, choose Tools | Templates.
+            Role role;
+            try{
+                role =(Role) obj;
+                if(role.getRoleID() == this.roleID )
+                    return true;
+            }catch(Exception e){}
+        return false; //To change body of generated methods, choose Tools | Templates.
     }
 }

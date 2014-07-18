@@ -98,8 +98,6 @@ public class UserManagerBean implements Serializable {
         int userID = getUser().getUserID();
         String username = getUser().getUserName();
         String fullname = getUser().getFullName();
-        String newpass = getUser().getPwd();
-
         String address = getUser().getAddress();
         String email = getUser().getEmail();
         String phone = getUser().getPhone();
@@ -109,18 +107,10 @@ public class UserManagerBean implements Serializable {
         java.sql.Date date = new java.sql.Date(birthday.getTime());
         int gender = getUser().getGender();
         String idcard = getUser().getIdCard();
-        User user = new User(userID, username, newpass, fullname, date, gender, idcard, address, email, phone, null, roleID, null, 1);
+        User user = new User(userID, username, null, fullname, date, gender, idcard, address, email, phone, null, roleID, null, 1);
         if (USER_SERVICE.updateProfile(user)) {
 
-            System.out.println(userID);
-            System.out.println(username);
-            System.out.println(fullname);
-            System.out.println(newpass);
-            System.out.println(address);
-            System.out.println(email);
-            System.out.println(phone);
-            System.out.println(roleID);
-            System.out.println(date);
+           
 
             return "users_manager";
 
