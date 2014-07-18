@@ -144,7 +144,7 @@ public class UserDAO implements UserDAOService {
         }
         return user;
     }
-    
+
     @Override
     public User getUserByUserName(String userName) {
         User user = new User();
@@ -226,7 +226,7 @@ public class UserDAO implements UserDAOService {
             Connection conn = ConnectionFactory.getConnection();
             String sql = "select * from tbl_user where " + key + " like '" + "%" + value + "%" + "'";
             PreparedStatement pstmt = conn.prepareStatement(sql);
-                ResultSet rs = pstmt.executeQuery();
+            ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 User user = new User();
                 user.setUserID(rs.getInt("userID"));
@@ -347,7 +347,7 @@ public class UserDAO implements UserDAOService {
         try {
             Connection conn = ConnectionFactory.getConnection();
             String sql = "update tbl_user set fullName = ?, birthday = ?, gender = ?, idCard = ?, userAddress = ?, email = ?,"
-                    + "phone = ? where userID = ?";
+                    + "phone = ?,roleID = ? where userID = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, user.getFullName());
             pstmt.setDate(2, (java.sql.Date) user.getBirthday());
@@ -356,7 +356,9 @@ public class UserDAO implements UserDAOService {
             pstmt.setString(5, user.getAddress());
             pstmt.setString(6, user.getEmail());
             pstmt.setString(7, user.getPhone());
-            pstmt.setInt(8, user.getUserID());
+            pstmt.setInt(8, user.getRole().getRoleID());
+            pstmt.setInt(9, user.getUserID());
+
             pstmt.executeUpdate();
             isCheck = true;
         } catch (SQLException | ClassNotFoundException e) {
@@ -477,7 +479,7 @@ public class UserDAO implements UserDAOService {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return isCheck; 
+        return isCheck;
     }
 
     @Override
@@ -494,7 +496,7 @@ public class UserDAO implements UserDAOService {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return isCheck; 
+        return isCheck;
     }
 
 }
