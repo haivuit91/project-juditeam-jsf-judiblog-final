@@ -26,31 +26,30 @@ public class LoginBean {
     private User user = new User();
     private String message = "";
 
-    
-    public String checkLogin(){
-        if(USER_SERVICE.checkLogin(getUser().getUserName(), getUser().getPwd())){
+    public String checkLogin() {
+        if (USER_SERVICE.checkLogin(getUser().getUserName(), util.Support.encryptMD5(getUser().getPwd()))) {
             HttpSession session = util.Support.getSession();
             User u = USER_SERVICE.getUserByUserName(getUser().getUserName());
             session.setAttribute(util.Constants.CURRENT_USER, u);
 //            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentUser", u);
             return "home?faces-redirect=true";
-        }else{
+        } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
                     "Invalid Login!", "Please try again!"));
             return "login";
         }
     }
-    
-    public String logout(){
+
+    public String logout() {
         HttpSession session = util.Support.getSession();
         session.invalidate();
         return "login";
     }
-    
-    public String welcomeMessage(){
+
+    public String welcomeMessage() {
         return "Hello: " + user.getUserName();
     }
-    
+
     /**
      * @return the user
      */
